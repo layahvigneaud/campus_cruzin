@@ -4,6 +4,7 @@ import Login from './components/Login'
 import Home from './components/Home'
 import SearchPage from './components/SearchPage'
 import Review from './components/Review'
+import Club from './components/Club'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Home />}></Route>
         <Route path='/searchclubs' element={<SearchPage />}></Route>
         <Route path='/review' element={<Review />}></Route>
+        <Route path='/club' element={<Club />}></Route>
       </Routes>
     </BrowserRouter>
   )
