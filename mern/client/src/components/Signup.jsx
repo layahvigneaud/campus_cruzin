@@ -12,7 +12,7 @@ function Signup() {
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:3001/register', {name, email, password})
+        axios.post('http://localhost:3001/auth/register', {name, email, password})
         .then(result => { console.log(result)
             navigate('/login');
         })
