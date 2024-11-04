@@ -1,0 +1,12 @@
+{
+  "name": "campus_cruzin",
+  "version": "1.0.0",
+  "description": "THIS IS WHAT I USED TO SET UP FRONT AND BACK-END\r TO RUN ->\r > node --env-file=config.env server\r Pinged your deployment. You successfully connected to MongoDB!\r Server is running on port: 5050\r and\r On seperate terminal -> npm run dev\r https://www.mongodb.com/resources/languages/mern-stack-tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
