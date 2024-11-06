@@ -17,7 +17,7 @@ function Signup() {
             navigate('/login');
         })
         .catch(err => console.log(err));
-    }
+    } 
 
     return (
     <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
