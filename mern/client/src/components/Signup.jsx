@@ -12,6 +12,8 @@ function Signup() {
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!email.endsWith("ucla.edu"))
+            return;
         axios.post('http://localhost:3001/auth/register', {name, email, password})
         .then(result => { console.log(result)
             navigate('/login');

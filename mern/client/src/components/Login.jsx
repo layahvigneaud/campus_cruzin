@@ -15,7 +15,7 @@ function Login() {
         .then(result => { 
             console.log(result);
             if (result.data === "Success") {
-                navigate('/');
+                navigate('/homepage');
             }
         })
         .catch(err => console.log(err));
