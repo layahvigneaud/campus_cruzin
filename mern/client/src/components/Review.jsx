@@ -3,17 +3,11 @@ import Navbar from './Navbar';
 import '../styles/Review.css';
 import { useState } from 'react'
 
-
-
-
-
-
 function Review() {
     const clubOptions = {
 
     }
 
-   
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
