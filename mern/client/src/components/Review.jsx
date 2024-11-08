@@ -9,6 +9,7 @@ function Review() {
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
+    const [accepted, setAcceptance] = useState("")
     const [maxTime, setTime] = useState("")
     const [maxRating, setRating] = useState("")
     const [formData, setFormData] = useState({Position: "", Description: ""})
@@ -36,6 +37,10 @@ function Review() {
 
     const handlePositionChange= (e) => {
         setPosition(e.target.value);
+    }
+
+    const handleAcceptanceChange = (e) => {
+        setAcceptance(e.target.value);
     }
     
     const [maxValue, setMaxValue] = useState(7);
@@ -190,20 +195,20 @@ function Review() {
                     <label>
                         <input 
                             type="radio" 
-                            name="Application Required" 
-                            value="Yes" 
-                            checked={applicationReq === "Yes"} 
-                            onChange={handleApplicationChange}
+                            name="Admitted" 
+                            value="Yes " 
+                            checked={accepted === "Yes"} 
+                            onChange={handleAcceptanceChange}
                         />
                         Yes
                     </label>
                     <label>
                         <input 
                             type="radio" 
-                            name="Application Required" 
+                            name="Admitted" 
                             value="No" 
-                            checked={applicationReq === "No"} 
-                            onChange={handleApplicationChange}
+                            checked={accepted === "No"} 
+                            onChange={handleAcceptanceChange}
                         />
                         No
                     </label>
