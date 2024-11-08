@@ -2,7 +2,7 @@ import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Club() {
+function Test() {
     const [clubs, setClubs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ function Club() {
             </div>
             <nav className= 'navbar navbar-expand-lg navbar-light bg-light'> <form className="form-inline my-2 my-lg-0">
       <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button classNAme="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form></nav>
             <div>
                 {clubs.map(club => (
@@ -53,4 +53,4 @@ function Club() {
     );
 }
 
-export default Club
+export default Test

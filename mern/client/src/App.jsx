@@ -7,6 +7,7 @@ import Review from './components/Review'
 import Club from './components/Club'
 import ForgotPassword from './components/ForgotPassword'
 import ResetPassword from './components/ResetPassword'
+import Test from './components/test'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
         <Route path='/resetpassword/:token' element={<ResetPassword />}></Route>
+        <Route path='/test' element={<Test />}></Route>
       </Routes>
     </BrowserRouter>
   )
