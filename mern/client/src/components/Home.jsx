@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import { Link } from "react-router-dom";
-import './Home.css';
+import '../styles/Home.css';
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
