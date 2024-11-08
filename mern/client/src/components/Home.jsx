@@ -1,9 +1,24 @@
 import Navbar from './Navbar';
 import { Link } from "react-router-dom";
-import './Home.css';
+import '../styles/Home.css';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Home() {
     const filterTags = ["Computer Science", "Social Good", "Aerospace Engineering"];
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                navigate('/');
+            }
+        })
+    }, []);
+
     return (
         <div class="clubs">
             <Navbar />
