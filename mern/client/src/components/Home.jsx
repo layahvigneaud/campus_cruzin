@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import { Link } from "react-router-dom";
-import './Home.css';
+import '../styles/Home.css';
 
 function Home() {
     const filterTags = ["Computer Science", "Social Good", "Aerospace Engineering"];

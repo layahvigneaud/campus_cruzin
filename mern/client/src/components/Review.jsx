@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Navbar from './Navbar';  
-import './Review.css';
+import '../styles/Review.css';
 import { useState } from 'react'
 
 
