@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Axios from 'axios'
+import axios from 'axios'
 
 function ForgotPassword() {
     const [email, setEmail] = useState("");
@@ -7,7 +7,7 @@ function ForgotPassword() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        Axios.post('http://localhost:3001/auth/forgotpassword', {
+        axios.post('http://localhost:3001/auth/forgotpassword', {
             email
         }).then(response => { 
             if (response.data.status) {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from 'axios'
+import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import SignupButton from './SignupButton'
 
@@ -9,11 +9,11 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    Axios.defaults.withCredentials = true;
+    axios.defaults.withCredentials = true;
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
         e.preventDefault();
-        Axios.post('http://localhost:3001/auth/login', {
+        axios.post('http://localhost:3001/auth/login', {
             email, 
             password
         }).then(response => { 

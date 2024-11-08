@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import Axios from 'axios'
+import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import LoginButton from './LoginButton'
 
@@ -15,7 +15,7 @@ function Signup() {
         e.preventDefault();
         if (!email.endsWith("ucla.edu"))
             return;
-        Axios.post('http://localhost:3001/auth/signup', {
+        axios.post('http://localhost:3001/auth/signup', {
             username, email, password
         }).then(response => { 
             if (response.data.status) {

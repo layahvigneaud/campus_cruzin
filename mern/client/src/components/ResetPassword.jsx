@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function ResetPassword() {
@@ -10,7 +10,7 @@ function ResetPassword() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        Axios.post(`http://localhost:3001/auth/resetpassword/${token}`, {
+        axios.post(`http://localhost:3001/auth/resetpassword/${token}`, {
             password
         }).then(response => { 
             if (response.data.status) {

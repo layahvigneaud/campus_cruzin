@@ -5,7 +5,6 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const router = express.Router();
 
-
 router.post('/signup', async(req, res) => {
     const {username, email, password} = req.body;
     const user = await UserModel.findOne({email});
@@ -101,9 +100,10 @@ const verifyUser = async (req, res, next) => {
         if(!token) {
             return res.json({status: false, message: "no token"});
         }
-        const decoded = jwt.verify(token, process.env.KEY);
-        next()
+        const decoded = await jwt.verify(token, process.env.KEY);
+        next();
     } catch (err) {
+        console.error("Error in axios request: ", err);
         return res.json(err);
     }
 }
