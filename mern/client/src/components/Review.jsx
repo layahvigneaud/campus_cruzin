@@ -4,26 +4,14 @@ import '../styles/Review.css';
 import { useState } from 'react'
 
 
-
-
 function Review() {
-    const clubOptions = {
-
-    }
-
-     
+   
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
     const [maxTime, setTime] = useState("")
     const [maxRating, setRating] = useState("")
-<<<<<<< Updated upstream
-    const [formData, setFormData] = useState({name: "",email: "",message: ""});
-=======
     const [formData, setFormData] = useState({Position: "", Description: ""})
-
-
->>>>>>> Stashed changes
 
     const handleMajorChange = (e) => {
         setMajor(e.target.value);
