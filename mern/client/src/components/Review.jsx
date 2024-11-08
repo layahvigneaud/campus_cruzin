@@ -6,21 +6,24 @@ import { useState } from 'react'
 
 
 
-
-
 function Review() {
     const clubOptions = {
 
     }
 
-   
+     
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
-    const [position, setPosition] = useState("")
     const [maxTime, setTime] = useState("")
     const [maxRating, setRating] = useState("")
+<<<<<<< Updated upstream
     const [formData, setFormData] = useState({name: "",email: "",message: ""});
+=======
+    const [formData, setFormData] = useState({Position: "", Description: ""})
+
+
+>>>>>>> Stashed changes
 
     const handleMajorChange = (e) => {
         setMajor(e.target.value);
@@ -50,8 +53,8 @@ function Review() {
     const [maxValue, setMaxValue] = useState(7);
 
     // Handle changes to the min and max values
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
+    const handleCommitmentChange = (e) => {
+        setCommitment(e.target.value);
     }
 
     const handleRatingChange = (e) => {
@@ -233,7 +236,7 @@ function Review() {
                     min="0"
                     max="7"
                     value={maxTime}
-                    onChange={handleTimeChange}
+                    onChange={handleCommitmentChange}
                     style={{ width: '70%' }}
                 />
             </div>
@@ -247,7 +250,7 @@ function Review() {
                     min="0"
                     max="10"
                     value={maxRating}
-                    onChange={handleRatingChange}
+                    onChange={handleCommitmentChange}
                     style={{ width: '70%' }}
                 />
             </div>
