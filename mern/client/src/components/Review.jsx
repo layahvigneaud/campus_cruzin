@@ -3,18 +3,15 @@ import Navbar from './Navbar';
 import '../styles/Review.css';
 import { useState } from 'react'
 
+
 function Review() {
-    const clubOptions = {
-
-    }
-
+   
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
-    const [position, setPosition] = useState("")
     const [maxTime, setTime] = useState("")
     const [maxRating, setRating] = useState("")
-
+    const [formData, setFormData] = useState({Position: "", Description: ""})
 
     const handleMajorChange = (e) => {
         setMajor(e.target.value);
@@ -44,15 +41,24 @@ function Review() {
     const [maxValue, setMaxValue] = useState(7);
 
     // Handle changes to the min and max values
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
+    const handleCommitmentChange = (e) => {
+        setCommitment(e.target.value);
     }
 
     const handleRatingChange = (e) => {
         setRating(e.target.value);
     }
 
-
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    }
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        alert(`Name: ${formData.name}, Email: ${formData.email}, Message: ${formData.message}`
+        )
+    }
    
 
 
@@ -95,7 +101,7 @@ function Review() {
 
             <div>
                 <label>
-                    <h3> Major (I FEEL IS UNNECCESARY ) </h3> 
+                    <h3> Major (MAKE INTO OPTIONAL ) </h3> 
                     <select 
                         id = "major"
                         value = {major} 
@@ -156,7 +162,18 @@ function Review() {
             <div>
                 <h3>
                     Position
+                    <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}/>
 
+                    <label htmlFor="email">Email:</label>
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}/>
+
+                    <label htmlFor="message">Message:</label>
+                    <textarea id="message" name="message" value={formData.message} onChange={handleChange}/>
+
+                    <button type="submit">Submit</button>
+                    </form>
 
 
 
@@ -207,7 +224,7 @@ function Review() {
                     min="0"
                     max="7"
                     value={maxTime}
-                    onChange={handleTimeChange}
+                    onChange={handleCommitmentChange}
                     style={{ width: '70%' }}
                 />
             </div>
@@ -221,7 +238,7 @@ function Review() {
                     min="0"
                     max="10"
                     value={maxRating}
-                    onChange={handleRatingChange}
+                    onChange={handleCommitmentChange}
                     style={{ width: '70%' }}
                 />
             </div>
