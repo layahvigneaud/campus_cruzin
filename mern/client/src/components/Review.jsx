@@ -15,6 +15,8 @@ function Review() {
     const [position, setPosition] = useState("")
     const [maxTime, setTime] = useState("")
     const [maxRating, setRating] = useState("")
+    const [formData, setFormData] = useState({position: "", description: ""} );
+
 
 
     const handleMajorChange = (e) => {
@@ -29,6 +31,12 @@ function Review() {
             console.log("Form submitted with:", selectedOption);
         }
     }
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    }
+  
 
     const handleClubChange = (e) => {
         setClub(e.target.value);
@@ -56,14 +64,18 @@ function Review() {
     const handleRatingChange = (e) => {
         setRating(e.target.value);
     }
-
-
-   
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      alert(`Name: ${formData.position}, Description: ${formData.description}`
+      )
+    }
 
 
     return (    
 
         <div>
+            <form onSubmit={handleSubmit}>
             <h1> Club Review Form </h1>
 
             <div>
@@ -129,7 +141,18 @@ function Review() {
 
             </div>
 
+            <div>
+                <h3>
+                    Position
 
+                </h3>
+                
+                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}/>
+
+                <p></p>
+
+            </div>
+            
             <div>
                 <h3> Application Required? </h3> 
                 
@@ -158,19 +181,6 @@ function Review() {
 
             </div>
 
-            <div>
-                <h3>
-                    Position
-
-
-
-
-                </h3>
-
-                <p></p>
-
-            </div>
-
 
             <div>
                 <h3> Admitted? </h3> 
@@ -179,7 +189,7 @@ function Review() {
                         <input 
                             type="radio" 
                             name="Admitted" 
-                            value="Yes " 
+                            value="Yes" 
                             checked={accepted === "Yes"} 
                             onChange={handleAcceptanceChange}
                         />
@@ -236,13 +246,18 @@ function Review() {
             <div>
                 <h3>Description</h3>
                 <p> How was the application process. </p>
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}/>
+
+
+                 
             </div>
 
 
 
 
 
-
+            <button type="submit">Submit</button>
+            </form>
 
         </div>
 
