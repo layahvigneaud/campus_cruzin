@@ -6,22 +6,21 @@ import Navbar from './Navbar';
 import '../styles/Review.css';
 
 function Review() {
-    const clubOptions = {
-
-    }
 
     const [major, setMajor] = useState("");
     const [club, setClub] = useState(""); 
     const [applicationReq, setApplicationReq] = useState("")
     const [accepted, setAcceptance] = useState("")
     const [position, setPosition] = useState("")
-    const [maxTime, setTime] = useState("")
-    const [maxRating, setRating] = useState("")
-    const [formData, setFormData] = useState({position: "", description: ""} );
+    const [description, setDescription] = useState("")
+    const [maxTime, setTime] = useState(0)
+    const [maxRating, setRating] = useState(0)
+    const [error, setError] = useState("")
 
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(-1);
     axios.defaults.withCredentials = true;
+
     useEffect(() => {
         axios.get('http://localhost:3001/auth/verify')
         .then(response => {
@@ -31,67 +30,55 @@ function Review() {
         })
     }, []);
 
+
     const handleMajorChange = (e) => {
         setMajor(e.target.value);
-        e.preventDefault();
-        // Validate that a valid option is selected
-        if (!major) {
-            setError("Please select a valid option");
-        } else {
-            setError("");
-            // Form submission logic here
-            console.log("Form submitted with:", selectedOption);
-        }
     }
-
-    const handleChange = (event) => {
-      const { name, value } = event.target;
-      setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-    }
-  
-
     const handleClubChange = (e) => {
         setClub(e.target.value);
     }
-
     const handleApplicationChange = (e) => {
         setApplicationReq(e.target.value);
     }
-
-    const handlePositionChange= (e) => {
-        setPosition(e.target.value);
-    }
-
     const handleAcceptanceChange = (e) => {
         setAcceptance(e.target.value);
     }
-    
-    const [maxValue, setMaxValue] = useState(7);
-
-    // Handle changes to the min and max values
+    const handlePositionChange= (e) => {
+        setPosition(e.target.value);
+    }
+    const handleDescriptionChange= (e) => {
+        setDescription(e.target.value);
+    }
     const handleTimeChange = (e) => {
         setTime(e.target.value);
     }
-
     const handleRatingChange = (e) => {
         setRating(e.target.value);
     }
-  
+
     const handleSubmit = (event) => {
       event.preventDefault();
-      alert(`Name: ${formData.position}, Description: ${formData.description}`
-      )
+      
+      if ( !club || !position || !description || applicationReq === "" ||accepted ===""){
+        setError (" Please fill out ALL necessary fields ")
+        alert(' Please fill out ALL necessary fields !! ')
+        return
+      }
+
+      setError("")
+
+      navigate("/homepage")
     }
 
-
+    const isFormValid = club && position && description && applicationReq && accepted;
     return (    
         <div>
             <form onSubmit={handleSubmit}>
-            <h1> Club Review Form </h1>
-
+            <h1>Club Review Form</h1>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <div>
                 <label>
-                    <h3> Clubs </h3> 
+                    <h3>Clubs<span style={{ color: 'red' }}>*</span></h3> 
                     <select 
                         id = "club"
                         value = {club} 
@@ -123,13 +110,13 @@ function Review() {
 
             <div>
                 <label>
-                    <h3> Major (I FEEL IS UNNECCESARY ) </h3> 
+                    <h3>Major</h3> 
                     <select 
                         id = "major"
                         value = {major} 
                         onChange = {handleMajorChange}>
                         
-                        <option value="">--Select--</option> {}
+                        <option value="">--Select--</option>
 
                         <option value="Computer Science">
                             Computer Science</option>
@@ -153,19 +140,16 @@ function Review() {
             </div>
 
             <div>
-                <h3>
-                    Position
-
-                </h3>
+                <h3>Position<span style={{ color: 'red' }}>*</span></h3>
                 
-                <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}/>
+                <input type="text" id="position" name="position" value={position} onChange={handlePositionChange}/>
 
                 <p></p>
 
             </div>
 
             <div>
-                <h3> Application Required? </h3> 
+                <h3>Application Required?<span style={{ color: 'red' }}>*</span></h3> 
                 
                     <label>
                         <input 
@@ -194,7 +178,7 @@ function Review() {
 
 
             <div>
-                <h3> Admitted? </h3> 
+                <h3>Admitted?<span style={{ color: 'red' }}>*</span></h3> 
                 
                     <label>
                         <input 
@@ -225,7 +209,7 @@ function Review() {
 
             
             <div style={{ padding: '20px' }}>
-                <h1> Time Commitment (hrs/wk) </h1>
+                <h1>Time Commitment (hrs/wk)<span style={{ color: 'red' }}>*</span></h1>
                 <br />
                 <input
                     id="hrs/wk"
@@ -239,7 +223,7 @@ function Review() {
             </div>
 
             <div style={{ padding: '20px' }}>
-                <h1> Overall Rating </h1>
+                <h1>Overall Rating<span style={{ color: 'red' }}>*</span></h1>
                 <br />
                 <input
                     id="overall rating"
@@ -255,21 +239,22 @@ function Review() {
 
 
             <div>
-                <h3>Description</h3>
+                <h3>Description<span style={{ color: 'red' }}>*</span></h3>
                 <p> How was the application process. </p>
-                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange}/>
+                    <input type="text" id="description" name="description" value={description} onChange={handleDescriptionChange}/>
 
 
                  
             </div>
 
+            <p></p>
+            <p></p>
 
-
-
-
-            <button type="submit">Submit</button>
+            <button type="submit">Submit Review :) </button>
+            
+            
             </form>
-
+        
         </div>
 
 
