@@ -28,8 +28,8 @@ function Signup() {
 
     return (
     <div className="auth-container">
-        <h2>Sign Up</h2>
-        <form className='auth-form' onSubmit={handleSubmit}>
+        <form className="auth-form" onSubmit={handleSubmit}>
+            <h2>Sign Up</h2>
             <div className="input-label">
                 <label htmlFor="username">
                     <strong>Username</strong>
@@ -73,8 +73,10 @@ function Signup() {
                 Sign Up
             </button>
         </form>
-        <p>Already have an account?</p>
-        <LoginButton />
+        <div className="auth-footer">
+            <p>Already have an account?</p>
+            <LoginButton />
+        </div> 
     </div>
     );
 }
