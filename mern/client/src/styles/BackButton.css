@@ -1,0 +1,10 @@
+.back-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    background: transparent;
+    border: 0;
+}
