@@ -1,3 +1,11 @@
+.clubs {
+    background-color: #fffcf4;
+}
+
+.home-elements {
+    text-align: center;
+}
+
 .club-cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -11,12 +19,11 @@
     margin: 0 auto;
 }
 
-
 .club-card {
     width: 450px;
     height: 250px;
     border: 1px solid grey;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 20px;
     background-color: white;
     box-sizing: border-box;
@@ -28,7 +35,7 @@ button {
     height: 100%;   
     border: none;
     border-radius: 15px;
-    background-color: cornflowerblue;
-    color: white;
+    background-color: white;
+    color: #084464;
     font-size: 16px;
 }

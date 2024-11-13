@@ -1,0 +1,7 @@
+.navbar {
+    background-color: #ffecb4; /* Dark gray background */
+    padding: 10px;
+    display: flex;
+    /*gap: 10px; /* Space between buttons */
+    justify-content: center; /* Center aligns the navbar items */
+}
