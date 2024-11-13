@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../styles/AuthPages.css';
 
 function ResetPassword() {
     const [password, setPassword] = useState("");
@@ -9,6 +10,11 @@ function ResetPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!password) {
+            alert("Please provide a password!");
+            return;
+        }
 
         axios.post(`http://localhost:3001/auth/resetpassword/${token}`, {
             password
@@ -25,8 +31,8 @@ function ResetPassword() {
 
     return (
         <div className="auth-container">
-            <form className="auth-form" onSubmit={handleSubmit}>
-                <div className="auth-form-content">
+            <div className="auth-form" onSubmit={handleSubmit}>
+                <form className="auth-form-content">
                     <h2 className="reset-password">Reset Password</h2>
                     <div className="input-label">
                         <label htmlFor="password">
@@ -44,8 +50,8 @@ function ResetPassword() {
                     <button type="submit">
                         Reset
                     </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>  
     );
 }

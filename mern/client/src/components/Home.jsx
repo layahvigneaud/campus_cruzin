@@ -14,6 +14,7 @@ function Home() {
         axios.get('http://localhost:3001/auth/verify')
         .then(response => {
             if (!response.data.status) {
+                console.log(response.data);
                 navigate('/');
             }
         })

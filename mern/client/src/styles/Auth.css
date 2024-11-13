@@ -1,10 +1,10 @@
 .default-auth-container {
-    height: 100vh;
-    width: 100vw;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    padding: 2em;
 }
 
 .auth-container-right {
@@ -15,11 +15,7 @@
 
 .Campus-Cruisin-Car {
     width: 32rem;
-    margin: 5rem;
-}
-
-.project-title {
-    margin-right: 8em;
+    margin-right: 4rem;
 }
 
 .project-title h1 {
@@ -31,6 +27,5 @@
     flex-direction: row;
     gap: 1em;
     margin-top: 1em;
-    margin-right: 8em;
     justify-content: flex-end;
 }

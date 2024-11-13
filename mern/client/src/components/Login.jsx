@@ -15,12 +15,24 @@ function Login() {
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (!email || !password) {
+            alert("All fields are required!");
+            return;
+        }
+
         axios.post('http://localhost:3001/auth/login', {
             email, 
             password
         }).then(response => { 
             if (response.data.status) {
                 navigate('/homepage');
+            }
+            else if (response.data.message === "user is not registered") {
+                alert("User does not exist!");
+            }
+            else if (response.data.message === "password is incorrect") {
+                alert("Password is incorrect!");
             }
         }).catch(err => {
             console.log(err)
@@ -29,9 +41,9 @@ function Login() {
 
     return (
         <div className="auth-container">
-            <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-form" onSubmit={handleSubmit}>
                 <BackButton />
-                <div className="auth-form-content">
+                <form className="auth-form-content">
                     <h2>Log In</h2>
                     <div className="input-label">
                         <label htmlFor="email">
@@ -70,8 +82,8 @@ function Login() {
                             </div>
                         </div>
                     </div>    
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }

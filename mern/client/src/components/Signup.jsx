@@ -14,13 +14,25 @@ function Signup() {
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!email.endsWith("ucla.edu"))
+        if (!email || !password || !username) {
+            alert("All fields are required!");
             return;
+        }
+        else if (!email.endsWith("ucla.edu")) {
+            alert("A valid ucla.edu email is required!");
+            return;
+        }
         axios.post('http://localhost:3001/auth/signup', {
             username, email, password
         }).then(response => { 
             if (response.data.status) {
                 navigate('/login');
+            }
+            else if (response.data.message === "user already exists") {
+                alert("User already exists!");
+            }
+            else if (response.data.message === "username is taken") {
+                alert("Username is taken!");
             }
         }).catch(err => {
             console.log(err);
@@ -29,9 +41,9 @@ function Signup() {
 
     return (
     <div className="auth-container">
-        <form className="auth-form" onSubmit={handleSubmit}>
+        <div className="auth-form" onSubmit={handleSubmit}>
             <BackButton />
-            <div className="auth-form-content">
+            <form className="auth-form-content">
                 <h2>Sign Up</h2>
                 <div className="input-label">
                     <label htmlFor="username">
@@ -47,7 +59,7 @@ function Signup() {
                 </div>
                 <div className="input-label">
                     <label htmlFor="email">
-                        <h3>Email</h3>
+                        <h3>UCLA Email</h3>
                     </label>
                     <input
                         type="text"
@@ -79,8 +91,8 @@ function Signup() {
                         <LoginButton />
                     </div>
                 </div> 
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     );
 }
