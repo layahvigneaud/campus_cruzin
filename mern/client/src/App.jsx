@@ -16,6 +16,10 @@ function App() {
       <Routes>
         {/* special protected route (protected when logged in) */}
         <Route path='/' element={<Auth/>}></Route>
+        <Route path='/signup' element={<Signup />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
+        <Route path='/resetpassword/:token' element={<ResetPassword />}></Route>
 
         {/* protected routes (not logged in)*/}
         <Route path='/homepage' element={<Home />}></Route>
@@ -23,10 +27,6 @@ function App() {
         <Route path='/club' element={<Club />}></Route>
 
         {/* unprotected routes */}
-        <Route path='/signup' element={<Signup />}></Route>
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/forgotpassword' element={<ForgotPassword />}></Route>
-        <Route path='/resetpassword/:token' element={<ResetPassword />}></Route>
         <Route path='/test' element={<Test />}></Route>
       </Routes>
     </BrowserRouter>

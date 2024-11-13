@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import BackButton from './BackButton'; 
 import '../styles/AuthPages.css';
 
 function ForgotPassword() {
     const [email, setEmail] = useState("");
+    axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
     
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (response.data.status) {
+                navigate(-1);
+            }
+        })
+    }, []);
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
