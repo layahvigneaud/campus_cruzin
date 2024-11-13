@@ -67,7 +67,7 @@ function Review() {
 
       setError("")
 
-      navigate("/homepage")
+      navigate(-1)
     }
 
     const isFormValid = club && position && description && applicationReq && accepted;
@@ -75,10 +75,10 @@ function Review() {
         <div>
             <form onSubmit={handleSubmit}>
             <h1>Club Review Form</h1>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <p className="error-message">{error}</p>}
             <div>
                 <label>
-                    <h3>Clubs<span style={{ color: 'red' }}>*</span></h3> 
+                    <h3>Clubs<span className="asterisk">*</span></h3> 
                     <select 
                         id = "club"
                         value = {club} 
@@ -140,7 +140,7 @@ function Review() {
             </div>
 
             <div>
-                <h3>Position<span style={{ color: 'red' }}>*</span></h3>
+                <h3>Position<span className="asterisk">*</span></h3>
                 
                 <input type="text" id="position" name="position" value={position} onChange={handlePositionChange}/>
 
@@ -149,7 +149,7 @@ function Review() {
             </div>
 
             <div>
-                <h3>Application Required?<span style={{ color: 'red' }}>*</span></h3> 
+                <h3>Application Required?<span className="asterisk">*</span></h3> 
                 
                     <label>
                         <input 
@@ -178,7 +178,7 @@ function Review() {
 
 
             <div>
-                <h3>Admitted?<span style={{ color: 'red' }}>*</span></h3> 
+                <h3>Admitted?<span className="asterisk">*</span></h3> 
                 
                     <label>
                         <input 
@@ -209,7 +209,7 @@ function Review() {
 
             
             <div style={{ padding: '20px' }}>
-                <h1>Time Commitment (hrs/wk)<span style={{ color: 'red' }}>*</span></h1>
+                <h1>Time Commitment (hrs/wk)<span className="asterisk">*</span></h1>
                 <br />
                 <input
                     id="hrs/wk"
@@ -223,7 +223,7 @@ function Review() {
             </div>
 
             <div style={{ padding: '20px' }}>
-                <h1>Overall Rating<span style={{ color: 'red' }}>*</span></h1>
+                <h1>Overall Rating<span className="asterisk">*</span></h1>
                 <br />
                 <input
                     id="overall rating"
@@ -237,9 +237,8 @@ function Review() {
             </div>
 
 
-
             <div>
-                <h3>Description<span style={{ color: 'red' }}>*</span></h3>
+                <h3>Description<span className="asterisk">*</span></h3>
                 <p> How was the application process. </p>
                     <input type="text" id="description" name="description" value={description} onChange={handleDescriptionChange}/>
 
