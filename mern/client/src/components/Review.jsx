@@ -30,6 +30,16 @@ const InterviewForm = () => {
         { value: 6, label: "6" },
         { value: 7, label: "7+"},
     ];  
+
+    const overallRatingOptions = [
+        { value: 0, label: "0" },
+        { value: 1, label: "1" },
+        { value: 2, label: "2" },
+        { value: 3, label: "3" },
+        { value: 4, label: "4" },
+        { value: 5, label: "5" },
+    ];  
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [club, setClub] = useState("");
@@ -40,6 +50,7 @@ const InterviewForm = () => {
     const [timeCommitment, settimeCommitment] = useState(timeCommitmentOptions[0]); 
     const [description, setDescription] = useState("");
     const [major, setMajor] = useState("");
+    const [overallRating, setOverallRating] = useState(overallRatingOptions[0]);
 
     useEffect(() => {
         const getClubs = async () => {
@@ -66,7 +77,7 @@ const InterviewForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();   
-        if (club === "" || major === "" || applicationRequired === "" || timeCommitment === timeCommitmentOptions[0] || description === "") {
+        if (club === "" || major === "" || applicationRequired === "" || timeCommitment === timeCommitmentOptions[0] || overallRating === overallRatingOptions[0] || description === "") {
             alert("Please fill in all required fields!");
             return;
         }
@@ -161,7 +172,7 @@ const InterviewForm = () => {
                         </div>
                     ))}
                     </div>    
-                    <p>* Time Commitment (per wk)</p>
+                    <p>* Time Commitment (hours per week)</p>
                     <fieldset className="range-field">
                         <input
                             className="range"
@@ -195,6 +206,36 @@ const InterviewForm = () => {
                             <text className="range__point" x="70.5%" y="14" textAnchor="middle">{timeCommitmentOptions[6].label}</text>
                             <text className="range__point" x="84.5%" y="14" textAnchor="middle">{timeCommitmentOptions[7].label}</text>
                             <text className="range__point" x="98%" y="14" textAnchor="middle">{timeCommitmentOptions[8].label}</text>
+                        </svg>
+                    </fieldset>   
+                    <p>* Overall Rating</p>
+                    <fieldset className="range-field">
+                        <input
+                            className="range"
+                            type="range"
+                            min="0"
+                            max="4"
+                            step="1"
+                            value={overallRating.value}
+                            onChange={e => {
+                                const index = parseInt(e.target.value);
+                                const selectedOption = overallRatingOptions[index];
+                                setOverallRating(selectedOption);
+                            }}
+                        />
+                        <svg role="presentation" width="100%" height="10">
+                            <rect className="range__tick" x="0.5%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="25%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="50%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="75%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="99%" y="3" width="1" height="10"></rect>
+                        </svg>
+                        <svg role="presentation" width="100%" height="14">
+                            <text className="range__point" x="0.1%" y="14" textAnchor="start">{overallRatingOptions[1].label}</text>
+                            <text className="range__point" x="25%" y="14" textAnchor="middle">{overallRatingOptions[2].label}</text>
+                            <text className="range__point" x="50%" y="14" textAnchor="middle">{overallRatingOptions[3].label}</text>
+                            <text className="range__point" x="75%" y="14" textAnchor="middle">{overallRatingOptions[4].label}</text>
+                            <text className="range__point" x="99%" y="14" textAnchor="middle">{overallRatingOptions[5].label}</text>
                         </svg>
                     </fieldset>   
                     <p>* Description</p>
