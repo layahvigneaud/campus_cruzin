@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import SignupButton from './SignupButton'
 import BackButton from "./BackButton";
+import '../styles/AuthPages.css';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ function Login() {
                     <h2>Log In</h2>
                     <div className="input-label">
                         <label htmlFor="email">
-                            <strong>Email</strong>
+                            <h3>Email</h3>
                         </label>
                         <input
                             type="text"
@@ -46,7 +47,7 @@ function Login() {
                     </div>
                     <div className="input-label">
                         <label htmlFor="password">
-                            <strong>Password</strong>
+                            <h3>Password</h3>
                         </label>
                         <input
                             type="password"
@@ -57,12 +58,17 @@ function Login() {
                         />
                     </div>
                     <div className="auth-footer">
-                        <Link to="/forgotpassword">Forgot Password?</Link>
                         <button type="submit">
                             Log In
                         </button>
-                        <p>Don't have an account?</p>
-                        <SignupButton />
+                        <div className="navigate-away-section">
+                            <Link to="/forgotpassword"><p>Forgot Password?</p></Link>
+                            <hr className="rounded" /> 
+                            <div>
+                                <p>Don't have an account?</p>
+                                <SignupButton />
+                            </div>
+                        </div>
                     </div>    
                 </div>
             </form>

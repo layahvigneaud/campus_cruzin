@@ -22,6 +22,10 @@ h1, h2, h3, p {
     margin: 0;
 }
 
+p, Link {
+    font-family: 'Roboto', sans-serif;
+}
+
 form {
     margin: 0;
     padding: 0;
@@ -31,6 +35,7 @@ button {
     font-family: 'Roboto', sans-serif;
     font-size: 1em;
     font-weight:bold;
+    margin: 0.5rem 0;
     height: 2em;
     width: 7em;
     border-radius: 0.5rem;
