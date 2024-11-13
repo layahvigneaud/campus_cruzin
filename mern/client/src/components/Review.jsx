@@ -1,257 +1,218 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+// TODO: figure out how to make slider map to string values
+
+import React, { useState, useEffect } from "react";
+import CreatableSelect from "react-select/creatable";
+import BackButton from './BackButton';
 import axios from 'axios';
-import Navbar from './Navbar';  
-import '../styles/Review.css';
+import "../styles/Review.css";
 
-function Review() {
-    const clubOptions = {
+const InterviewForm = () => {
 
-    }
+    const applicationRequiredOptions = [
+        { value: "yes", label: "Yes" },
+        { value: "no", label: "No" },
+      ];
 
+    const offeredPositionOptions = [
+        { value: "yes", label: "Yes" },
+        { value: "no", label: "No" },
+        { value: "pending", label: "Pending" }
+    ];
+
+    const timeCommitmentOptions = [
+        {value: -1, label: "-1"},
+        { value: 0, label: "0" },
+        { value: 1, label: "1" },
+        { value: 2, label: "2" },
+        { value: 3, label: "3" },
+        { value: 4, label: "4" },
+        { value: 5, label: "5" },
+        { value: 6, label: "6" },
+        { value: 7, label: "7+"},
+    ];  
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [club, setClub] = useState("");
+    const [clubOptions, setClubOptions] = useState([]);
+    const [position, setPosition] = useState("");
+    const [applicationRequired, setApplicationRequired] = useState("");
+    const [offeredPosition, setOfferedPosition] = useState("");
+    const [timeCommitment, settimeCommitment] = useState(timeCommitmentOptions[0]); 
+    const [description, setDescription] = useState("");
     const [major, setMajor] = useState("");
-    const [club, setClub] = useState(""); 
-    const [applicationReq, setApplicationReq] = useState("")
-    const [position, setPosition] = useState("")
-    const [maxTime, setTime] = useState("")
-    const [maxRating, setRating] = useState("")
 
-    const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get('http://localhost:3001/auth/verify')
-        .then(response => {
-            if (!response.data.status) {
-                navigate('/');
+        const getClubs = async () => {
+            try {
+                //retrieve clubs from clubs/populate routing
+                const response = await axios.get('http://localhost:3001/clubs/populate');
+                const dataClubOptions = (response.data).map(item => ({
+                    value: item._id,
+                    label: item.name
+                })); //store in react state
+
+                setClubOptions(dataClubOptions);
+                setLoading(false);
             }
-        })
-    }, []);
-
-    const handleMajorChange = (e) => {
-        setMajor(e.target.value);
-        e.preventDefault();
-        // Validate that a valid option is selected
-        if (!major) {
-            setError("Please select a valid option");
-        } else {
-            setError("");
-            // Form submission logic here
-            console.log("Form submitted with:", selectedOption);
+            catch (error) {
+                //catch errors and output
+                console.error('Error fetching clubs:', error);
+                setError('Failed to load clubs');
+                setLoading(false);
+            }
         }
-    }
+        getClubs();
+    }, []);   
 
-    const handleClubChange = (e) => {
-        setClub(e.target.value);
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();   
+        if (club === "" || major === "" || applicationRequired === "" || timeCommitment === timeCommitmentOptions[0] || description === "") {
+            alert("Please fill in all required fields!");
+            return;
+        }
+        console.log(club, major, position, offeredPosition, timeCommitment, description);
+    };  
 
-    const handleApplicationChange = (e) => {
-        setApplicationReq(e.target.value);
-    }
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;   
 
-    const handlePositionChange= (e) => {
-        setPosition(e.target.value);
-    }
-    
-    const [maxValue, setMaxValue] = useState(7);
-
-    // Handle changes to the min and max values
-    const handleTimeChange = (e) => {
-        setTime(e.target.value);
-    }
-
-    const handleRatingChange = (e) => {
-        setRating(e.target.value);
-    }
-
-
-    return (    
-        <div>
-            <h1> Club Review Form </h1>
-
-            <div>
-                <label>
-                    <h3> Clubs </h3> 
-                    <select 
-                        id = "club"
-                        value = {club} 
-                        onChange = {handleClubChange}>
-
-                        <option value="">--Select--</option> {/* Default empty option */}
-                        <option value="ACM AI">
-                            ACM AI</option>
-
-                        <option value="IEEE">
-                            IEEE</option>
-
-                        <option value="club3">
-                            club3</option>
-
-                        <option value="club4">
-                            club4</option>
-
-                        <option value="club5">
-                            club5</option>
-
-                        
-                    </select>
-
-                </label>
-                <p></p>
-
-            </div>
-
-            <div>
-                <label>
-                    <h3> Major (I FEEL IS UNNECCESARY ) </h3> 
-                    <select 
-                        id = "major"
-                        value = {major} 
-                        onChange = {handleMajorChange}>
-                        
-                        <option value="">--Select--</option> {}
-
-                        <option value="Computer Science">
-                            Computer Science</option>
-
-                        <option value="Mechanical Engineering">
-                            Mechanical Engineering</option>
-
-                        <option value="Electrical Engineering">
-                            Electrical Engineering</option>
-
-                        <option value="Computer Engineering">
-                            Computer Engineering </option>
-
-                        <option value="Electrical and Computer Engineering">
-                            Electrical and Computer Engineering</option>
-                    </select>
-
-                </label>
-                <p></p>
-
-            </div>
-
-
-            <div>
-                <h3> Application Required? </h3> 
-                
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="Application Required" 
-                            value="Yes" 
-                            checked={applicationReq === "Yes"} 
-                            onChange={handleApplicationChange}
+    return (
+        <div className="review-container">
+            <div className="review-form">
+                <BackButton/>
+                <form className="review-form-content">
+                    <h2>Club Details</h2> 
+                    <p>* Club Name:</p>
+                    <CreatableSelect
+                    className="s-skills-select"
+                    value={club}
+                    onChange={(newValue) => {
+                        setClub(newValue);
+                    }}
+                    options={
+                        clubOptions
+                    }
+                    />    
+                    <p>* Major:</p>
+                    <CreatableSelect
+                    className="s-skills-select"
+                    value={major}
+                    onChange={(newValue) => {
+                        setMajor(newValue);
+                    }}
+                    options={[
+                        { value: "ComputerScience", label: "Computer Science" },
+                        { value: "ComputerScienceandEngineering", label: "Computer Science and Engineering" },
+                        { value: "ComputerEngineering", label: "Computer Engineering" },
+                        { value: "ElectricalEngineering", label: "Electrical Engineering" },
+                        { value: "ChemicalEngineering", label: "Chemical Engineering" },
+                        { value: "MathematicsofComputation", label: "Mathematics of Computation" },
+                        { value: "LinguisticsandComputerScience", label: "Linguistics and Computer Science" },
+                        { value: "MechanicalEngineering", label: "Mechanical Engineering" },
+                        { value: "AerospaceEngineering", label: "Aerospace Engineering" },
+                        { value: "CivilEngineering", label: "Civil Engineering" },
+                        { value: "ChemicalEngineering", label: "Chemical Engineering" },
+                        { value: "BiomedicalEngineering", label: "Biomedical Engineering" },  
+                    ]}
+                    />
+                    <p>Position (if any)</p>
+                    <input
+                    type="text"
+                    name="position"
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    className="s-input"
+                    />    
+                    <p>* Application Required?</p>
+                    <div id="application-required">
+                    {applicationRequiredOptions.map((option) => (
+                        <div key={option.value}>
+                        <label>
+                            <input
+                            type="radio"
+                            value={option.value}
+                            checked={applicationRequired.value === option.value}
+                            onChange={e => {
+                                const selectedOption = applicationRequiredOptions.find(option => option.value === e.target.value);
+                                setApplicationRequired(selectedOption);
+                            }}
+                            />
+                            {option.label}
+                        </label>
+                        </div>
+                    ))}
+                    </div>    
+                    <p>Were you offered a position?</p>
+                    <div id="offeredPosition">
+                    {offeredPositionOptions.map((option) => (
+                        <div key={option.value}>
+                        <label>
+                            <input
+                            type="radio"
+                            value={option.value}
+                            checked={offeredPosition.value === option.value}
+                            onChange={e => {
+                                const selectedOption = offeredPositionOptions.find(option => option.value === e.target.value);
+                                setOfferedPosition(selectedOption);
+                            }}
+                            />
+                            {option.label}
+                        </label>
+                        </div>
+                    ))}
+                    </div>    
+                    <p>* Time Commitment (per wk)</p>
+                    <fieldset className="range-field">
+                        <input
+                            className="range"
+                            type="range"
+                            min="0"
+                            max="7"
+                            step="1"
+                            value={timeCommitment.value}
+                            onChange={e => {
+                                const index = parseInt(e.target.value) + 1;
+                                const selectedOption = timeCommitmentOptions[index];
+                                settimeCommitment(selectedOption);
+                            }}
                         />
-                        Yes
-                    </label>
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="Application Required" 
-                            value="No" 
-                            checked={applicationReq === "No"} 
-                            onChange={handleApplicationChange}
-                        />
-                        No
-                    </label>
-                    <p></p>                   
-                
-
+                        <svg role="presentation" width="100%" height="10">
+                            <rect className="range__tick" x="1%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="15.3%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="29.25%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="43%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="57.14%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="70.5%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="84.5%" y="3" width="1" height="10"></rect>
+                            <rect className="range__tick" x="98%" y="3" width="1" height="10"></rect>
+                        </svg>
+                        <svg role="presentation" width="100%" height="14">
+                            <text className="range__point" x="1%" y="14" textAnchor="start">{timeCommitmentOptions[1].label}</text>
+                            <text className="range__point" x="15.3%" y="14" textAnchor="middle">{timeCommitmentOptions[2].label}</text>
+                            <text className="range__point" x="29.25%" y="14" textAnchor="middle">{timeCommitmentOptions[3].label}</text>
+                            <text className="range__point" x="43%" y="14" textAnchor="middle">{timeCommitmentOptions[4].label}</text>
+                            <text className="range__point" x="57.14%" y="14" textAnchor="middle">{timeCommitmentOptions[5].label}</text>
+                            <text className="range__point" x="70.5%" y="14" textAnchor="middle">{timeCommitmentOptions[6].label}</text>
+                            <text className="range__point" x="84.5%" y="14" textAnchor="middle">{timeCommitmentOptions[7].label}</text>
+                            <text className="range__point" x="98%" y="14" textAnchor="middle">{timeCommitmentOptions[8].label}</text>
+                        </svg>
+                    </fieldset>   
+                    <p>* Description</p>
+                    <textarea
+                    name="description"
+                    rows="5"
+                    cols="50"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    className="s-input"
+                    ></textarea>  
+                    <div>
+                        <button type="submit" className="button" onClick={(e) => { handleSubmit(e) }}>Submit</button>
+                    </div>
+                </form>
             </div>
-
-            <div>
-                <h3>
-                    Position
-
-
-
-
-                </h3>
-
-                <p></p>
-
-            </div>
-
-
-            <div>
-                <h3> Admitted? </h3> 
-                
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="Application Required" 
-                            value="Yes" 
-                            checked={applicationReq === "Yes"} 
-                            onChange={handleApplicationChange}
-                        />
-                        Yes
-                    </label>
-                    <label>
-                        <input 
-                            type="radio" 
-                            name="Application Required" 
-                            value="No" 
-                            checked={applicationReq === "No"} 
-                            onChange={handleApplicationChange}
-                        />
-                        No
-                    </label>
-                    
-                
-
-
-            </div>
-
-
-            
-            <div style={{ padding: '20px' }}>
-                <h1> Time Commitment (hrs/wk) </h1>
-                <br />
-                <input
-                    id="hrs/wk"
-                    type="range"
-                    min="0"
-                    max="7"
-                    value={maxTime}
-                    onChange={handleTimeChange}
-                    style={{ width: '70%' }}
-                />
-            </div>
-
-            <div style={{ padding: '20px' }}>
-                <h1> Overall Rating </h1>
-                <br />
-                <input
-                    id="overall rating"
-                    type="range"
-                    min="0"
-                    max="10"
-                    value={maxRating}
-                    onChange={handleRatingChange}
-                    style={{ width: '70%' }}
-                />
-            </div>
-
-
-
-            <div>
-                <h3>Description</h3>
-                <p> How was the application process. </p>
-            </div>
-
-
-
-
-
-
-
         </div>
-
-
-
     );
-}
+};
 
-export default Review
+export default InterviewForm;
