@@ -1,5 +1,7 @@
 import { useState } from "react";
-import axios from 'axios'
+import axios from 'axios';
+import BackButton from './BackButton'; 
+import '../styles/AuthPages.css';
 
 function ForgotPassword() {
     const [email, setEmail] = useState("");
@@ -20,26 +22,31 @@ function ForgotPassword() {
     } 
 
     return (
-        <form className="auth-form" onSubmit={handleSubmit}>
-                <h2>Forgot Password?</h2>
-                <div className="input-label">
-                    <label htmlFor="email">
-                        <strong>Email</strong>
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Enter Email"
-                        autoComplete="off"
-                        name="email"
-                        className="form-control rounded-0"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+        <div className="auth-container">
+            <form className="auth-form" onSubmit={handleSubmit}>
+                <BackButton />
+                <div className="auth-form-content">
+                    <h2>Forgot Password?</h2>
+                    <div className="input-label">
+                        <label htmlFor="email">
+                            <h3>Email</h3>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter Email"
+                            autoComplete="off"
+                            name="email"
+                            className="form-control rounded-0"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <button type="submit">
+                        Send Email
+                    </button>
                 </div>
-                <button type="submit">
-                    Send Email
-                </button>
-        </form>
-    )
+            </form>
+        </div>
+    );
 }
 
 export default ForgotPassword
