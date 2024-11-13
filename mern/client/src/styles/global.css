@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+    background-color:#FBF9F1;
+}
+
+h1, h2, h3 {
+    font-family: 'Secular One', sans-serif;
+    color: #024363;
+    margin: 0;
+}
+
+h2 {
+    font-size: xx-large;
+}
+
+h3 {
+    font-size: large;
+}
+
+p, Link {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+form {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight:bold;
+    margin: 0.5rem 0;
+    height: 2em;
+    width: 7em;
+    border-radius: 0.5rem;
+    border: 0.075em solid;
+    background-color: #FFB703;
+    border-color: #D9D9D9;
+    color: #024363;
+}

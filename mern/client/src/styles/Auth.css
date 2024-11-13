@@ -1,0 +1,31 @@
+.default-auth-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+.auth-container-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+}
+
+.Campus-Cruisin-Car {
+    width: 32rem;
+    margin-right: 4rem;
+}
+
+.project-title h1 {
+    font-size: 5em;
+}
+
+.button-cluster {
+    display:flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-top: 1em;
+    justify-content: flex-end;
+}
