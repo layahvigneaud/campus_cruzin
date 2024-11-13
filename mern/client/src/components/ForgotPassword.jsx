@@ -9,6 +9,10 @@ function ForgotPassword() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (!email || !email.endsWith("ucla.edu")) {
+            alert("Please enter a valid ucla.edu email!");
+        }
+
         axios.post('http://localhost:3001/auth/forgotpassword', {
             email
         }).then(response => { 
@@ -23,9 +27,9 @@ function ForgotPassword() {
 
     return (
         <div className="auth-container">
-            <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-form" onSubmit={handleSubmit}>
                 <BackButton />
-                <div className="auth-form-content">
+                <form className="auth-form-content">
                     <h2>Forgot Password?</h2>
                     <div className="input-label">
                         <label htmlFor="email">
@@ -43,8 +47,8 @@ function ForgotPassword() {
                     <button type="submit">
                         Send Email
                     </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }

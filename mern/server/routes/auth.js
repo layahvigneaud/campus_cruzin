@@ -7,9 +7,13 @@ const router = express.Router();
 
 router.post('/signup', async(req, res) => {
     const {username, email, password} = req.body;
-    const user = await UserModel.findOne({email});
-    if (user) {
+    const user_email = await UserModel.findOne({email});
+    const user_name = await UserModel.findOne({username});
+    if (user_email) {
         return res.json({message: "user already exists"});
+    }
+    else if (user_name) {
+        return res.json({message: "username is taken"});
     }
 
     const hashpassword = await bcrypt.hash(password, 10);
