@@ -1,65 +1,55 @@
 import Navbar from './Navbar';
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from 'react';
+import SaveButton from './SaveButton';
+import Rating from './Rating';
+import ReviewCard from './ReviewCard';
+import ClubInfoCard from './ClubInfoCard';
+import '../styles/Club.css';
 
 function Club() {
-    const [clubs, setClubs] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [filterRating, setFilterRating] = useState('');
 
-    const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
-
-    useEffect(() => {
-
-        axios.get('http://localhost:3001/auth/verify')
-        .then(response => {
-            if (!response.data.status) {
-                navigate('/');
-            }
-        })
-
-        const getClubs = async () => {
-            try {
-                //retrieve clubs from clubs/populate routing
-                const response = await axios.get('http://localhost:3001/clubs/populate');
-                setClubs(response.data); //store in react state
-                setLoading(false);
-            }
-            catch (error) {
-                //catch errors and output
-                console.error('Error fetching clubs:', error);
-                setError('Failed to load clubs');
-                setLoading(false);
-            }
-        }
-        getClubs();
-    }, []);
-
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>{error}</p>;
-
-
+    const handleChangeFilter = event => {
+        setFilterRating(event.target.value);
+    }
 
     return (
         <div>
             <Navbar/>
-            <h1>CLUBS:</h1>
-            <div className='text-muted mb-2'>
-                Filters <span className='fas fa-sliders-h'></span>
-            </div>
-            <nav className= 'navbar navbar-expand-lg navbar-light bg-light'> <form className="form-inline my-2 my-lg-0">
-      <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <button classNAme="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form></nav>
-            <div>
-                {clubs.map(club => (
-                    <div key={club._id}>
-                        <h3>{club.name}</h3>
-                        <p>{club.description}</p>
+            <div className="content-container">
+                <div>
+                    <ClubInfoCard/>
+                </div>
+                <div className="review-container">
+                    <h3>Reviews</h3>
+                    <div className="review-nav-bar">
+                        <select
+                            name="rating-filter"
+                            value={filterRating}
+                            onChange={handleChangeFilter}
+                            id="rating-filter"
+                        >
+                            <option value="5.0">5.0 stars</option>
+                            <option value="4.5">4.5 stars</option>
+                            <option value="4.0">4.0 stars</option>
+                            <option value="3.5">3.5 stars</option>
+                            <option value="3.0">3.0 stars</option>
+                            <option value="2.5">2.5 stars</option>
+                            <option value="2.0">2.0 stars</option>
+                            <option value="1.5">1.5 stars</option>
+                            <option value="1.0">1.0 stars</option>
+                            <option value="0.5">0.5 stars</option>
+                            <option value="0.0">0.0 stars</option>
+                        </select>
+                        <button className="review-submit-button">Submit a Review!</button>
                     </div>
-                ))}
+                    <div>
+                        <ReviewCard/>
+                        <ReviewCard/>
+                        <ReviewCard/>
+                        <ReviewCard/>
+                    </div>
+                </div>
             </div>
         </div>
     );
