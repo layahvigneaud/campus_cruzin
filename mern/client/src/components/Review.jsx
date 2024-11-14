@@ -1,5 +1,3 @@
-// TODO: figure out how to make slider map to string values
-
 import React, { useState, useEffect } from "react";
 import CreatableSelect from "react-select/creatable";
 import BackButton from './BackButton';
