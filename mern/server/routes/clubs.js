@@ -13,4 +13,29 @@ router.get('/populate', async (req, res) => {
     }
 });
 
+// New route to filter clubs by tags
+router.post('/filter', async (req, res) => {
+    const { tags } = req.body;
+    try {
+        // Find clubs that have at least one matching tag
+        const clubs = await Club.find({ tags: { $in: tags } });
+        res.json(clubs);
+    } catch (error) {
+        console.error('Error fetching filtered clubs:', error);
+        res.status(500).json({ message: 'Error filtering clubs', error });
+    }
+});
+
 module.exports = router;
+
+
+router.get('/search', async (req, res) => {
+    const query = req.query.q || '';
+    try {
+        const clubs = await Club.find({ name: { $regex: query, $options: 'i' } }); // Case-insensitive search
+        res.json(clubs);
+    } catch (error) {
+        console.error('Error searching clubs:', error);
+        res.status(500).json({ message: 'Error searching clubs', error });
+    }
+});
