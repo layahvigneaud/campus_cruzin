@@ -11,8 +11,10 @@
     width: 100%;
 }
 
-button {
+.navbar button {
     background-color: transparent;
+    border: transparent;
+    margin: 0;
 }
 
 button:hover {
