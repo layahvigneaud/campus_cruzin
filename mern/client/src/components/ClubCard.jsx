@@ -1,12 +1,17 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
-function ClubCard({ club }) {
+function ClubCard({title, description}) {
     return (
         <div className="club-card">
-            <div className="club-card-content">
-                <h2>{club.name}</h2>
-                <p>{club.description}</p>
+            <div className="information">
+                <Link to="/searchclubs">
+                    <button type="button">{title}</button>
+                </Link>
+                <p>{description}</p>
             </div>
         </div>
     );
 }
+
+export default ClubCard;
