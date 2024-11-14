@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.content-container{
+    padding: 5rem;
+}
+
+.club-info-container{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12rem;
+    border-radius: 8px;
+    border: 1.5px, solid, #D9D9D9;
+    background-color: white;
+    padding: 2rem;
+    padding-right: 15rem;
+}
+
+
+.club-info-container h1{
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1.5rem;
+}
+
+.club-info-container p{
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: normal;
+    margin: 0.5rem 0;
+    color: #757575;
+}
+
+#descriptors{
+    margin-top: 2rem;
+    line-height: 1rem;
+}
+
+#descriptors strong{
+    font-weight: 600;
+    color: #FFB703;
+}
+
+.save-button{
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+}
+
+.rating{
+    margin-top: 5rem;
+}
+
+.review-card{
+    margin: 5rem;
+}
+
+.review-container{
+    margin-top: 1.5rem;
+    padding-right: 15rem;
+}
+
+.review-container h3{
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+}
+
+#rating-filter{
+    padding-left: 0.25rem;
+    width: 12rem;
+    height: 2rem;
+    border-radius: 5px;
+    border: 1.5px, solid, #D9D9D9;
+}
+
+.review-nav-bar{
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-submit-button{
+    font-size: 0.8rem;
+    width: 7rem;
+    height: 2rem;
+    padding: 0.25rem;
+    
+}

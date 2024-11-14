@@ -1,0 +1,19 @@
+.rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25em;
+    background-color: #024363;
+    color: white;
+    border-radius: 5px;
+    border: 0;
+    width: 4rem;
+    height: 2rem;
+    font-size: 0.75rem;
+    font-weight: normal;
+}
+
+.rating img{
+    width: 0.6rem;
+}
