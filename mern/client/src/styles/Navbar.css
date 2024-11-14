@@ -1,7 +1,22 @@
 .navbar {
-    background-color: #ffecb4; /* Dark gray background */
+    background-color: #ffecb4;
+    width: 100%;
     padding: 10px;
-    display: flex;
-    /*gap: 10px; /* Space between buttons */
-    justify-content: center; /* Center aligns the navbar items */
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.side-by-side {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.navbar button {
+    background-color: transparent;
+    border: transparent;
+    margin: 0;
+}
+
+button:hover {
+    text-decoration: underline;
 }

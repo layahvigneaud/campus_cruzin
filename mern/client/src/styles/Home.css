@@ -6,36 +6,74 @@
     text-align: center;
 }
 
+.search-and-cards {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.search-bar {
+    width: 200px;
+    padding: 5px;
+    font-size: 1em;
+    margin: 0;
+}
+
 .club-cards-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .side-by-side {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     align-items: center;
-    margin: 0 auto;
 }
 
 .club-card {
-    width: 450px;
-    height: 250px;
-    border: 1px solid grey;
-    border-radius: 10px;
+    width: 425px;
+    height: 275px;
+    border: 1px solid #D3D3D3;
+    border-radius: 7px;
     margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
     background-color: white;
     box-sizing: border-box;
-    margin: auto;
+    text-align: left;
+    padding: 10px;
 }
 
-button {
+.home-container button {
     width: 100%;
     height: 100%;   
     border: none;
     border-radius: 15px;
-    background-color: white;
     color: #084464;
-    font-size: 16px;
+}
+
+.club-card button {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #084464;
+    align-self: left;
+    font-weight: bold;
+    text-align: left;
+    background-color: transparent;
+}
+
+.club-card p {
+    margin-left: 1.5em;
+    margin-right: 1em;
+    color: grey;
+    font-size: 1em;
+    line-height: 1.5;
 }
