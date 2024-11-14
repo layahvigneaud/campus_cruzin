@@ -12,11 +12,12 @@ function Home() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/auth/verify')
-            .then(response => {
-                if (!response.data.status) {
-                    navigate('/');
-                }
-            })
+        .then(response => {
+            if (!response.data.status) {
+                console.log(response.data);
+                navigate('/');
+            }
+        })
     }, []);
 
     return (
