@@ -188,7 +188,7 @@ const InterviewForm = () => {
                         </div>
                     ))}
                     </div>    
-                    <p><span className = "asterisk">*</span> Time Commitment (hours per week)</p>
+                    <p><span className = "asterisk">*</span> Time Commitment (hrs per wk)</p>
                     <fieldset className="range-field">
                         <input
                             className="range"
@@ -254,7 +254,7 @@ const InterviewForm = () => {
                             <text className="range__point" x="99%" y="14" textAnchor="middle">{overallRatingOptions[5].label}</text>
                         </svg>
                     </fieldset>   
-                    <p><span className = "asterisk">*</span> Description <span className = "little-note"> (toggle lower right corner to expand txt box) </span></p>
+                    <p><span className = "asterisk">*</span> Description <span className = "little-note"> (to expand txt box: toggle the bottom right corner) </span></p>
                     <textarea
                     name="description"
                     rows="5"
