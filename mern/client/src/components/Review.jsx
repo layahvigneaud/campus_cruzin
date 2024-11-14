@@ -6,6 +6,22 @@ import BackButton from './BackButton';
 import axios from 'axios';
 import "../styles/Review.css";
 
+const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderColor: state.isFocused ? '#267a98' : '#ccc', // Border color changes when focused
+      boxShadow: state.isFocused ? '0 0 0 2px rgba(38, 122, 152, 0.3)' : 'none', // Optional: adds a glow effect on focus
+      '&:hover': {
+        borderColor: state.isFocused ? '#267a98' : '#bbb', // Change border color on hover
+      },
+    }),
+    // Optional: Styling for the option menu when opened
+    menu: provided => ({
+      ...provided,
+      zIndex: 9999, // To ensure the dropdown shows above other elements
+    }),
+  };
+
 const InterviewForm = () => {
 
     const applicationRequiredOptions = [
@@ -89,11 +105,11 @@ const InterviewForm = () => {
 
     return (
         <div className="review-container">
-            <div className="review-form">
-                <BackButton/>
+            <div>
+                <BackButton className = "back-button"/>
                 <form className="review-form-content">
                     <h2>Club Details</h2> 
-                    <p>* Club Name:</p>
+                    <p><span className = "asterisk">*</span> Club Name:</p>
                     <CreatableSelect
                     className="s-skills-select"
                     value={club}
@@ -104,7 +120,7 @@ const InterviewForm = () => {
                         clubOptions
                     }
                     />    
-                    <p>* Major:</p>
+                    <p><span className = "asterisk">*</span> Major:</p>
                     <CreatableSelect
                     className="s-skills-select"
                     value={major}
@@ -126,7 +142,7 @@ const InterviewForm = () => {
                         { value: "BiomedicalEngineering", label: "Biomedical Engineering" },  
                     ]}
                     />
-                    <p>Position (if any)</p>
+                    <p>Position <span className = "little-note"> (if any) </span></p>
                     <input
                     type="text"
                     name="position"
@@ -134,7 +150,7 @@ const InterviewForm = () => {
                     onChange={(e) => setPosition(e.target.value)}
                     className="s-input"
                     />    
-                    <p>* Application Required?</p>
+                    <p><span className = "asterisk">*</span> Application Required?</p>
                     <div id="application-required">
                     {applicationRequiredOptions.map((option) => (
                         <div key={option.value}>
@@ -153,7 +169,7 @@ const InterviewForm = () => {
                         </div>
                     ))}
                     </div>    
-                    <p>Were you offered a position?</p>
+                    <p>If so, were you offered a position?</p>
                     <div id="offeredPosition">
                     {offeredPositionOptions.map((option) => (
                         <div key={option.value}>
@@ -172,7 +188,7 @@ const InterviewForm = () => {
                         </div>
                     ))}
                     </div>    
-                    <p>* Time Commitment (hours per week)</p>
+                    <p><span className = "asterisk">*</span> Time Commitment (hours per week)</p>
                     <fieldset className="range-field">
                         <input
                             className="range"
@@ -208,7 +224,7 @@ const InterviewForm = () => {
                             <text className="range__point" x="98%" y="14" textAnchor="middle">{timeCommitmentOptions[8].label}</text>
                         </svg>
                     </fieldset>   
-                    <p>* Overall Rating</p>
+                    <p><span className = "asterisk">*</span> Overall Rating</p>
                     <fieldset className="range-field">
                         <input
                             className="range"
@@ -238,7 +254,7 @@ const InterviewForm = () => {
                             <text className="range__point" x="99%" y="14" textAnchor="middle">{overallRatingOptions[5].label}</text>
                         </svg>
                     </fieldset>   
-                    <p>* Description</p>
+                    <p><span className = "asterisk">*</span> Description <span className = "little-note"> (toggle lower right corner to expand txt box) </span></p>
                     <textarea
                     name="description"
                     rows="5"

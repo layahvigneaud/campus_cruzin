@@ -1,9 +1,110 @@
-input.range {
-    bottom: -10px;
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: transparent;
+    input.range {
+        bottom: -9px;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+    }
+
+
+    
+
+    .review-container{
+        background-color: #f4f4f4;;
+        border: 2px solid #b4b5b5;
+        border-radius: 20px;
+        padding: 25px;
+        margin: 50px;  
+        max-width: 800px;
+        box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    html, body {
+        height: 100%;
+        display: flex;           
+        justify-content: center;
+        align-items: center;      
+        background-color: #fbf9f3;
+        padding-top: 5vh
+  
+    }
+
+    .back-button{
+        top: 10vh; 
+        left: 1vw; 
+        justify-content: left;
+        margin: 0; 
+    }
+
+    /* Optionally, consider using viewport height (vh) for split-screen height adjustments */
+    @media (min-width: 100px) and (min-height: 100px) {
+    .review-container{
+            padding: 5vh;  /* Padding adjusts to viewport height */
+            margin: 5vh;   /* Margin adjusts to viewport height */
+        }
+    }
+
+    .asterisk{
+        color: #4475be;
+        /*e046a5*/
+        font-size: 20px;
+    }
+
+
+  p{
+    color: #024363;
+    font-family: 'Secular One', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 20px;
   }
+
+  .s-input {
+      width: 100%; /* Make the input fill the full width of its container */
+      height: 2.5em; /* Relative height, based on the font size */
+      padding: 0.5em; /* Padding relative to font size */
+      font-size: 1em; /* Font size relative to the parent container */
+      border: 1px solid #ccc; /* Light gray border */
+      border-radius: 8px; /* Rounded corners */
+      box-sizing: border-box; /* Ensure padding doesn't affect the width */
+      outline: none; /* Remove the default outline on focus */
+      transition: border-color 0.3s ease; /* Smooth transition for border color */
+  }
+  
+  textarea {
+    width: 100%; /* Make the textarea fill the full width of its container */
+    max-width: 100%; /* Ensures it doesn't grow beyond the parent container */
+    height: 200px; /* Increase the height of the textarea */
+    padding: 15px; /* Add padding for more space inside the textarea */
+    font-size: 16px; /* Increase the font size */
+    border: 2px solid #ccc; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-sizing: border-box; /* Ensure padding doesn't affect width/height */
+    outline: none; /* Remove focus outline */
+    transition: border-color 0.3s ease; /* Smooth transition for border color */
+}
+
+.s-input:focus {
+    border-color: #4687f6; /* Change border color when focused */
+    border-width: 2 px;
+}
+
+
+label {
+    color: #476271;
+    font-family: 'Secular One', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+fieldset {
+    border: none;
+    color: #4687f6 ;
+}
+
+.little-note{
+    font-size: 15px;
+}
