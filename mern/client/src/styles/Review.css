@@ -1,1 +1,105 @@
-                                                
+input.range {
+    bottom: -9px;
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.review-form-content{
+    background-color: #f4f4f4;;
+    border: 2px solid #b4b5b5;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 50px;  
+    max-width: 800px;
+    box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-container {
+    height: 100%;
+    display: flex;           
+    justify-content: center;
+    align-items: center;      
+    background-color: #fbf9f3;
+    padding-top: 5vh
+
+}
+
+.back-button{
+    top: 10vh; 
+    left: 1vw; 
+    justify-content: left;
+    margin: 0; 
+    font-size: 25px;
+}
+
+/* Optionally, consider using viewport height (vh) for split-screen height adjustments */
+@media (min-width: 100px) and (min-height: 100px) {
+.review-container{
+        padding: 5vh;  /* Padding adjusts to viewport height */
+        margin: 5vh;   /* Margin adjusts to viewport height */
+    }
+}
+
+.asterisk{
+    color: #4475be;
+    /*e046a5*/
+    font-size: 20px;
+}
+
+
+p{
+    color: #024363;
+    font-family: 'Secular One', sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 20px;
+}
+
+.s-input {
+  width: 100%; 
+  height: 2.5em; 
+  padding: 0.5em; 
+  font-size: 1em; 
+  border: 1px solid #ccc; 
+  border-radius: 8px;
+  box-sizing: border-box; /* so padding doesn't affect the width */
+  outline: none;
+  transition: border-color 0.3s ease; 
+}
+.s-input:focus {
+    border-color: #4687f6; /* Change border color when focused */
+}
+
+textarea {
+    width: 100%; 
+    height: 2.5em; 
+    padding: 0.5em; 
+    font-size: 1em; 
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    box-sizing: border-box; /* so padding doesn't affect the width */
+    outline: none;
+    transition: border-color 0.3s ease; 
+    }
+
+
+label {
+    color: #476271;
+    font-family: 'Secular One', sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+fieldset {
+    border: none;
+    color: #4687f6 ;
+}
+
+.little-note{
+    font-size: 15px;
+}
