@@ -1,4 +1,4 @@
-.club-info-container {
+.club-info-card-container {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -10,15 +10,14 @@
     padding-right: 15rem;
 }
 
-
-.club-info-container h1 {
+.club-info-card-container h1 {
     font-size: 1.5rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     margin-bottom: 1.5rem;
 }
 
-.club-info-container p {
+.club-info-card-container p {
     font-family: 'Inter', sans-serif;
     font-size: 0.75rem;
     font-weight: normal;
@@ -26,22 +25,12 @@
     color: #757575;
 }
 
-#descriptors {
+#club-info-card-descriptors {
     margin-top: 2rem;
     line-height: 1rem;
 }
 
-#descriptors strong {
+#club-info-card-descriptors strong {
     font-weight: 600;
     color: #FFB703;
-}
-
-.save-button {
-    position: absolute;
-    right: 1.25rem;
-    top: 1.25rem;
-}
-
-.rating {
-    margin-top: 5rem;
 }

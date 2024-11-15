@@ -5,12 +5,12 @@ import '../styles/ClubInfoCard.css';
 
 function ClubInfoCard(){
     return (
-        <div className="club-info-container">
-            <SaveButton className="save-button"/>
+        <div className="club-info-card-container">
+            <SaveButton/>
             <div>
                 <h1>ACM Teach LA</h1>
                 <p>ACM Teach LA pairs UCLA students with schools in  Los Angeles to provide free computer science classes. Their goal is to  empower all students with the ability to code, and use it to make a  difference.</p>
-                <Rating className="rating"/>
+                <Rating/>
             </div>
             <div>
                 <p>
@@ -20,7 +20,7 @@ function ClubInfoCard(){
                     
                     2. The curriculum team, whose members teach computer science to local Los Angeles schools on a weekly basis. 
                 </p>
-                <p id="descriptors">
+                <p id="club-info-card-descriptors">
                     <strong>Targeted majors:</strong> Computer Science
                     <br/>
                     

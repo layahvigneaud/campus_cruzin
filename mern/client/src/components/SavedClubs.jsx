@@ -6,7 +6,7 @@ function SavedClubs() {
     return (
         <div>
             <Navbar/>
-            <div className="content-container">
+            <div className="saved-clubs-content-container">
                 <h1>Your Saved Clubs</h1>
                 <ClubInfoCard/>
                 <ClubInfoCard/>

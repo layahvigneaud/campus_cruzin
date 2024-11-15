@@ -16,18 +16,18 @@ function Club() {
     return (
         <div>
             <Navbar/>
-            <div className="content-container">
+            <div className="club-content-container">
                 <div>
                     <ClubInfoCard/>
                 </div>
-                <div className="review-container">
+                <div className="club-reviews-container">
                     <h3>Reviews</h3>
-                    <div className="review-nav-bar">
+                    <div className="club-review-nav-bar">
                         <select
                             name="rating-filter"
                             value={filterRating}
                             onChange={handleChangeFilter}
-                            id="rating-filter"
+                            id="club-rating-filter"
                         >
                             <option value="5.0">5.0 stars</option>
                             <option value="4.5">4.5 stars</option>
@@ -41,7 +41,7 @@ function Club() {
                             <option value="0.5">0.5 stars</option>
                             <option value="0.0">0.0 stars</option>
                         </select>
-                        <button className="review-submit-button">Submit a Review!</button>
+                        <button className="club-review-submit-button">Submit a Review!</button>
                     </div>
                     <div>
                         <ReviewCard/>
