@@ -9,6 +9,7 @@ import ResetPassword from './components/ResetPassword';
 import Test from './components/test';
 import './styles/global.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import SavedClubs from './components/SavedClubs';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/homepage' element={<Home />}></Route>
         <Route path='/review' element={<Review/>}></Route>
         <Route path='/club' element={<Club />}></Route>
+        <Route path='/savedclubs' element={<SavedClubs />}></Route>
 
         {/* unprotected routes */}
         <Route path='/signup' element={<Signup />}></Route>
