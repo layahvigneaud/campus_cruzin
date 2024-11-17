@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import '../styles/AuthPages.css';
@@ -7,6 +7,16 @@ function ResetPassword() {
     const [password, setPassword] = useState("");
     const {token} = useParams();
     const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (response.data.status) {
+                navigate(-1);
+            }
+        })
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

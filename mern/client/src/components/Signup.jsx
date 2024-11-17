@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import LoginButton from './LoginButton';
@@ -10,6 +10,16 @@ function Signup() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+    
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (response.data.status) {
+                navigate('/homepage');
+            }
+        })
+    }, []);
 
     // submits form; if no error, then logs the results and nav to login
     const handleSubmit = (e) => {
