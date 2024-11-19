@@ -57,7 +57,7 @@ const InterviewForm = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [club, setClub] = useState("");
+    const [club, setClub] = useState(null); // this was changed from string to object
     const [clubOptions, setClubOptions] = useState([]);
     const [position, setPosition] = useState("");
     const [applicationRequired, setApplicationRequired] = useState("");
@@ -91,14 +91,42 @@ const InterviewForm = () => {
         getClubs();
     }, []);   
 
-    const handleSubmit = (e) => {
-        e.preventDefault();   
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent form reload
+        console.log("Enter")
         if (club === "" || major === "" || applicationRequired === "" || timeCommitment === timeCommitmentOptions[0] || overallRating === overallRatingOptions[0] || description === "") {
             alert("Please fill in all required fields!");
             return;
         }
-        console.log(club, major, position, offeredPosition, timeCommitment, description);
-    };  
+        if (!club) {
+            console.error("Club not selected");
+            return;
+        }
+   
+        const reviewData = {
+            club: club.value, // Ensure this is the ID of the selected club
+            major, // Extract the value from the major state
+            position,
+            applicationRequired,
+            offeredPosition, // Extract the value
+            timeCommitment: timeCommitment.value, // Extract the value
+            description,
+            overallRating: overallRating.value, // Extract the value
+        };
+        console.log("Review Data being sent:", reviewData);
+   
+        try {
+            const response = await axios.post('http://localhost:3001/reviews/add', reviewData);
+            if (response.status === 200) {
+                console.log("Review submitted successfully!");
+            } else {
+                console.error("Error submitting review:", response.data);
+            }
+        } catch (error) {
+            console.error("Error submitting review:", error);
+        }
+    };
+   
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;   
@@ -125,7 +153,8 @@ const InterviewForm = () => {
                     className="s-skills-select"
                     value={major}
                     onChange={(newValue) => {
-                        setMajor(newValue);
+                        setMajor(newValue.value);
+                        console.log(major);
                     }}
                     options={[
                         { value: "ComputerScience", label: "Computer Science" },

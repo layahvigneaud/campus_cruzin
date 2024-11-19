@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const authRoutes = require('./routes/auth'); 
 const clubRoutes = require('./routes/clubs'); 
+const reviewRoutes = require('./routes/Reviews');
 require("dotenv").config();
 
 const corsOptions = {
@@ -17,6 +18,7 @@ app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use('/auth', authRoutes);
 app.use('/clubs', clubRoutes);
+app.use('/reviews', reviewRoutes);
 
 mongoose.connect(process.env.MONGODB_USER_URL);
 app.listen(process.env.PORT, ()=> {
