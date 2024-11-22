@@ -117,7 +117,7 @@ const InterviewForm = () => {
    
         try {
             const response = await axios.post('http://localhost:3001/reviews/addReview', reviewData);
-            if (response.status === 200) {
+            if (response.status === 201) {
                 console.log("Review submitted successfully!");
                 alert("Thank you for submitting a review!");
             } else {
