@@ -57,7 +57,7 @@ const InterviewForm = () => {
 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [club, setClub] = useState(null); // this was changed from string to object
+    const [club, setClub] = useState("");
     const [clubOptions, setClubOptions] = useState([]);
     const [position, setPosition] = useState("");
     const [applicationRequired, setApplicationRequired] = useState("");
@@ -105,10 +105,10 @@ const InterviewForm = () => {
    
         const reviewData = {
             club: club.value, // Ensure this is the ID of the selected club
-            major, // Extract the value from the major state
+            major: major.value, // Extract the value from the major state
             position,
-            applicationRequired,
-            offeredPosition, // Extract the value
+            application: applicationRequired.value,
+            offeredPosition: offeredPosition.value, // Extract the value
             timeCommitment: timeCommitment.value, // Extract the value
             description,
             overallRating: overallRating.value, // Extract the value
@@ -116,9 +116,10 @@ const InterviewForm = () => {
         console.log("Review Data being sent:", reviewData);
    
         try {
-            const response = await axios.post('http://localhost:3001/reviews/add', reviewData);
+            const response = await axios.post('http://localhost:3001/reviews/addReview', reviewData);
             if (response.status === 200) {
                 console.log("Review submitted successfully!");
+                alert("Thank you for submitting a review!");
             } else {
                 console.error("Error submitting review:", response.data);
             }
@@ -126,16 +127,16 @@ const InterviewForm = () => {
             console.error("Error submitting review:", error);
         }
     };
-   
+ 
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;   
 
     return (
         <div className="review-container">
-            <div>
+            <div className="review-form">
                 <BackButton className = "back-button"/>
-                <form className="review-form-content">
+                <form className="review-form-content" onSubmit={ handleSubmit }>
                     <h2>Club Details</h2> 
                     <p><span className = "asterisk">*</span> Club Name:</p>
                     <CreatableSelect
@@ -153,8 +154,7 @@ const InterviewForm = () => {
                     className="s-skills-select"
                     value={major}
                     onChange={(newValue) => {
-                        setMajor(newValue.value);
-                        console.log(major);
+                        setMajor(newValue);
                     }}
                     options={[
                         { value: "ComputerScience", label: "Computer Science" },
@@ -293,7 +293,7 @@ const InterviewForm = () => {
                     className="s-input"
                     ></textarea>  
                     <div>
-                        <button type="submit" className="button" onClick={(e) => { handleSubmit(e) }}>Submit</button>
+                        <button type="submit" className="button">Submit</button>
                     </div>
                 </form>
             </div>

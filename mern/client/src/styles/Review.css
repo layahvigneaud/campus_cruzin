@@ -9,7 +9,7 @@ input.range {
     background: transparent;
 }
 
-.review-form-content{
+.review-form{
     background-color: #f4f4f4;;
     border: 2px solid #b4b5b5;
     border-radius: 20px;
@@ -17,6 +17,10 @@ input.range {
     margin: 50px;  
     max-width: 800px;
     box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.review-form-content {
+    margin: 2em;
 }
 
 .review-container {
@@ -29,7 +33,7 @@ input.range {
 
 }
 
-.back-button{
+.review-container .back-button{
     top: 10vh; 
     left: 1vw; 
     justify-content: left;
@@ -104,4 +108,3 @@ fieldset {
 .little-note{
     font-size: 15px;
 }
-

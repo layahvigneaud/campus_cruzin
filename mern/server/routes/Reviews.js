@@ -4,7 +4,7 @@ const Club = require('../models/Club'); // For validating club existence
 const router = express.Router();
 
 // Route to create a review
-router.post('/reviews/add', async (req, res) => {
+router.post('/addReview', async (req, res) => {
     const { club, major, position, application, offeredPosition, timeCommitment, description, overallRating } = req.body;
     console.log('Received data:', req.body);
     try {
@@ -20,13 +20,13 @@ router.post('/reviews/add', async (req, res) => {
         await review.save();
         res.status(201).json({ message: 'Review added successfully', review });
     } catch (error) {
-        console.error('Error adding review:', error);
+        console.log('Error adding review:', error);
         res.status(500).json({ message: 'Error adding review', error });
     }
 });
 
 // Route to get reviews for a specific club
-router.get('/club/:clubId', async (req, res) => {
+router.get('/:clubId', async (req, res) => {
     const { clubId } = req.params;
 
     try {
