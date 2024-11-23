@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose')
 
 const clubSchema = new mongoose.Schema({

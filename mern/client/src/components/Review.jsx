@@ -1,32 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import CreatableSelect from "react-select/creatable";
 import BackButton from './BackButton';
 import axios from 'axios';
 import "../styles/Review.css";
 
-
-const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      borderColor: state.isFocused ? '#267a98' : '#ccc', // Border color changes when focused
-      boxShadow: state.isFocused ? '0 0 0 2px rgba(38, 122, 152, 0.3)' : 'none', // Optional: adds a glow effect on focus
-      '&:hover': {
-        borderColor: state.isFocused ? '#267a98' : '#bbb', // Change border color on hover
-      },
-    }),
-    // Optional: Styling for the option menu when opened
-    menu: provided => ({
-      ...provided,
-      zIndex: 9999, // To ensure the dropdown shows above other elements
-    }),
-  };
-
 const InterviewForm = () => {
-
+    
     const applicationRequiredOptions = [
         { value: "yes", label: "Yes" },
         { value: "no", label: "No" },
-      ];
+    ];
 
     const offeredPositionOptions = [
         { value: "yes", label: "Yes" },
@@ -55,6 +39,7 @@ const InterviewForm = () => {
         { value: 5, label: "5" },
     ];  
 
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [club, setClub] = useState("");
@@ -91,23 +76,59 @@ const InterviewForm = () => {
         getClubs();
     }, []);   
 
-    const handleSubmit = (e) => {
-        e.preventDefault();   
-        if (club === "" || major === "" || applicationRequired === "" || timeCommitment === timeCommitmentOptions[0] || overallRating === overallRatingOptions[0] || description === "") {
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent form reload
+        console.log("Enter")
+        if (!club || !major || !applicationRequired || !description || 
+            timeCommitment.value === timeCommitmentOptions[0].value || 
+            overallRating.value === overallRatingOptions[0].value) 
+        {
             alert("Please fill in all required fields!");
             return;
         }
-        console.log(club, major, position, offeredPosition, timeCommitment, description);
-    };  
+        if (!club) {
+            console.error("Club not selected");
+            return;
+        }
+   
+        const reviewData = {
+            club: club.value, // Ensure this is the ID of the selected club
+            major: major.value, // Extract the value from the major state
+            position,
+            application: applicationRequired.value,
+            offeredPosition: offeredPosition.value, // Extract the value
+            timeCommitment: timeCommitment.value, // Extract the value
+            description,
+            overallRating: overallRating.value, // Extract the value
+        };
+        console.log("Review Data being sent:", reviewData);
+   
+        try {
+            const response = await axios.post('http://localhost:3001/reviews/addReview', reviewData);
+            if (response.status === 201) {
+                console.log("Review submitted successfully!");
+                navigate(-1);
+                setTimeout(() => {
+                    alert("Thank you for submitting your review!"); 
+                 }, 100);            
+            } 
+            else {
+                console.error("Error submitting review:", response.data);
+            }
+        } catch (error) {
+            console.error("Error submitting review:", error);
+        }
+    };
+ 
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>{error}</p>;   
 
     return (
         <div className="review-container">
-            <div>
+            <div className="review-form">
                 <BackButton className = "back-button"/>
-                <form className="review-form-content">
+                <form className="review-form-content" onSubmit={ handleSubmit }>
                     <h2>Club Details</h2> 
                     <p><span className = "asterisk">*</span> Club Name:</p>
                     <CreatableSelect
@@ -128,18 +149,18 @@ const InterviewForm = () => {
                         setMajor(newValue);
                     }}
                     options={[
-                        { value: "ComputerScience", label: "Computer Science" },
-                        { value: "ComputerScienceandEngineering", label: "Computer Science and Engineering" },
-                        { value: "ComputerEngineering", label: "Computer Engineering" },
-                        { value: "ElectricalEngineering", label: "Electrical Engineering" },
-                        { value: "ChemicalEngineering", label: "Chemical Engineering" },
-                        { value: "MathematicsofComputation", label: "Mathematics of Computation" },
-                        { value: "LinguisticsandComputerScience", label: "Linguistics and Computer Science" },
-                        { value: "MechanicalEngineering", label: "Mechanical Engineering" },
-                        { value: "AerospaceEngineering", label: "Aerospace Engineering" },
-                        { value: "CivilEngineering", label: "Civil Engineering" },
-                        { value: "ChemicalEngineering", label: "Chemical Engineering" },
-                        { value: "BiomedicalEngineering", label: "Biomedical Engineering" },  
+                        { value: "Computer Science", label: "Computer Science" },
+                        { value: "Computer Science and Engineering", label: "Computer Science and Engineering" },
+                        { value: "Computer Engineering", label: "Computer Engineering" },
+                        { value: "Electrical Engineering", label: "Electrical Engineering" },
+                        { value: "Chemical Engineering", label: "Chemical Engineering" },
+                        { value: "Mathematics of Computation", label: "Mathematics of Computation" },
+                        { value: "Linguistics and Computer Science", label: "Linguistics and Computer Science" },
+                        { value: "Mechanical Engineering", label: "Mechanical Engineering" },
+                        { value: "Aerospace Engineering", label: "Aerospace Engineering" },
+                        { value: "Civil Engineering", label: "Civil Engineering" },
+                        { value: "Chemical Engineering", label: "Chemical Engineering" },
+                        { value: "Biomedical Engineering", label: "Biomedical Engineering" },  
                     ]}
                     />
                     <p>Position <span className = "little-note"> (if any) </span></p>
@@ -232,11 +253,13 @@ const InterviewForm = () => {
                             min="0"
                             max="4"
                             step="1"
-                            value={overallRating.value}
+                            value={overallRating.value - 1}
                             onChange={e => {
-                                const index = parseInt(e.target.value);
-                                const selectedOption = overallRatingOptions[index];
-                                setOverallRating(selectedOption);
+                                const index = parseInt(e.target.value) + 1;
+                                console.log(index);
+                                console.log(overallRatingOptions[index]);
+                                setOverallRating(overallRatingOptions[index]);
+                                console.log(overallRating);
                             }}
                         />
                         <svg role="presentation" width="100%" height="10">
@@ -264,7 +287,7 @@ const InterviewForm = () => {
                     className="s-input"
                     ></textarea>  
                     <div>
-                        <button type="submit" className="button" onClick={(e) => { handleSubmit(e) }}>Submit</button>
+                        <button type="submit" className="button">Submit</button>
                     </div>
                 </form>
             </div>
