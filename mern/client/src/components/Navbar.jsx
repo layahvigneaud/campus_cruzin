@@ -5,11 +5,11 @@ import '../styles/Navbar.css';
 function Navbar() {
     return (
         <div class="navbar">
-            <div class="side-by-side">
+            <div class="navbar-side-by-side">
                 <Link to="/review">
                     <button type="button">Submit a Review!</button>
                 </Link>
-                <div class="logout-button"> {
+                <div class="navbar-logout-button"> {
                     <LogoutButton/>
                 }
                 </div>

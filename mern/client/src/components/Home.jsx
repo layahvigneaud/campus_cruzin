@@ -1,12 +1,12 @@
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Navbar from './Navbar';
 import ClubCard from './ClubCard';
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
-import '../styles/Home.css';
-import axios from 'axios';
+import '../styles/amanda-test.css';
 
-function Home() {
+function FilterComponent({ selectedTags, onTagChange }) {
+
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
 
@@ -20,74 +20,148 @@ function Home() {
         })
     }, []);
 
+    const tags = [
+        "design", "media", "cloud platforms", "programming", "cybersecurity", "community",
+        "women in tech", "Hackathons", "professional development", "AI & Data Science",
+        "engineering disciplines", "hands-on experience", "research & innovation"
+    ];
+
     return (
-        <div class="clubs">
+        <div>
+            {tags.map((tag, index) => (
+                <div key={index}>
+                    <input
+                        type="checkbox"
+                        id={`tag-${index}`}
+                        value={tag}
+                        checked={selectedTags.includes(tag)}
+                        onChange={() => onTagChange(tag)}
+                    />
+                    <label htmlFor={`tag-${index}`}>
+                        {tag}
+                    </label>
+                </div>
+            ))}
+        </div>
+    );
+}
+
+function Home() {
+    const [clubs, setClubs] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [selectedTags, setSelectedTags] = useState([]);
+    const [isFilterVisible, setIsFilterVisible] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const handleTagChange = (tag) => {
+        setSelectedTags((prevSelectedTags) =>
+            prevSelectedTags.includes(tag)
+                ? prevSelectedTags.filter((t) => t !== tag)
+                : [...prevSelectedTags, tag]
+        );
+    };
+
+    const fetchClubs = async (tags = []) => {
+        try {
+            setLoading(true);
+            let response;
+
+            if (tags.length === 0) {
+                response = await axios.get('http://localhost:3001/clubs/populate');
+            } else {
+                response = await axios.post('http://localhost:3001/clubs/filter', { tags });
+            }
+
+            setClubs(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching clubs:', error);
+            setError('Failed to load clubs');
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchClubs();
+    }, []);
+
+    const handleFilterClick = () => {
+        fetchClubs(selectedTags);
+    };
+
+    const toggleFilterVisibility = () => {
+        setIsFilterVisible((prevVisible) => !prevVisible);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredClubs = clubs.filter((club) =>
+        club.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>{error}</p>;
+
+    return (
+        <div class="home-clubs">
             <Navbar />
-            <div class="home-container">
-                <div class="home-elements">
-                    <div class="search-and-cards">
-                        <div class="search-division">
-                            <input class="search-bar" type="text" placeholder="Club Name"></input>
-                            <Link to="/searchclubs">
-                                <button type="button">Search All Clubs</button>
-                            </Link>
-                        </div>
-
-
-                        <div class="club-cards-container">
-                            <div class="side-by-side">
-                                <ClubCard
-                                    title="ACM Teach LA"
-                                    description="ACM Teach LA pairs UCLA students with schools in 
-                                Los Angeles to provide free computer science 
-                                classes. Their goal is to empower students with 
-                                the ability to code, and use it to make a difference."
+            <div className="home-container">
+                <div className="home-search-and-cards">
+                    {/* Left Sidebar with Search and Filters */}
+                    <div className="home-search-division">
+                        <h1>Filters</h1>
+                        <nav>
+                            <form>
+                                <input
+                                    className="home-search-bar"
+                                    type="search"
+                                    placeholder="Search by club name"
+                                    aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
                                 />
-
-                                <ClubCard
-                                    title="IEEE"
-                                    description="IEEE at UCLA is an engineering organization that 
-                            devotes time and energy towards bringing hands-
-                            on, practical experiences to engineering students 
-                            at UCLA. They lead several projects for members to 
-                            participate in, guided by dedicated leads."
-                                />
-                            </div>
-
-                            <div class="side-by-side">
-                                <ClubCard
-                                    title="LA Blueprint"
-                                    description=" LA Blueprint is a student-run 501(c)(3) nonprofit
-                            committed to building and promoting tech for Social
-                            good--free of charge. They collaborate with 
-                            nonprofit organizations in Southern California and 
-                            beyond to build mobile and web applications."
-                                />
-
-                                <ClubCard
-                                    title="SWE"
-                                    description="SWE-UCLA aims to bring professional development
-                            opprotunities to UCLA while advocating for the
-                            creation of an equal platform for all in engineering.
-                            SWE-UCLA has 7 committees and a Grad SWE 
-                            committee for UCLA grad students."
-                                />
-                            </div>
+                            </form>
+                        </nav>
+                        <div>
+                            <button
+                                onClick={toggleFilterVisibility}
+                                className="home-filter-buttons"
+                            >
+                                {isFilterVisible ? 'Hide Filters' : 'Show Filters'}
+                            </button>
+                            {isFilterVisible && (
+                                <div>
+                                    <FilterComponent selectedTags={selectedTags} onTagChange={handleTagChange} />
+                                    <button onClick={handleFilterClick}>
+                                        Apply Filters
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
-                </div>
-            </div>
 
-            <div class="club-cards">
-                <div class="card-body">
-                    <Link to='/club'>
-                        <h2 class="card-title">Club Name</h2>
-                    </Link>
-                    <p class="card-text">This is a short description of the card content.</p>
+                    {/* Right Content Area for Clubs */}
+                    <div className="home-club-cards-container">
+                        <h1>Clubs</h1>
+                        <div className="home-card-grid">
+                            {filteredClubs.map((club) => (
+                                <div key={club._id} className="home-clubcard">
+                                    <ClubCard 
+                                        title={club.name}
+                                        description={club.description}
+                                        club_id={club._id}
+                                    />
+                                </div>
+                            ))}
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Home
+export default Home;

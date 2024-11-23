@@ -6,9 +6,7 @@
     background: transparent;
     border: none;
     padding: 0;
-    position: absolute;
-    right: 1.25rem;
-    top: 1.25rem;
+    position: relative;
 }
 
 .save-button img{

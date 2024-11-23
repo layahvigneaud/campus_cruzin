@@ -1,6 +1,7 @@
 .rating {
     display: flex;
     flex-direction: row;
+    align-self: flex-end;
     align-items: center;
     justify-content: center;
     gap: 0.25em;
@@ -12,7 +13,6 @@
     height: 2rem;
     font-size: 0.75rem;
     font-weight: normal;
-    margin-top: 5rem;
 }
 
 .rating img{

@@ -44,21 +44,3 @@
     grid-template-columns: 1fr 1fr; /* Two columns of equal width */
     gap: 2em; /* Optional: Adds spacing between grid items */
 }
-
-.club-card {
-    width: 23em;
-    height: 15em;
-    border: 1px solid #D3D3D3;
-    border-radius: 7px;
-    background-color: white;
-    box-sizing: border-box;
-    text-align: left;
-    padding: 1em 1.5em;
-}
-
-.club-card p {
-    margin: 0;
-    color: grey;
-    font-size: 1em;
-    line-height: 1.5;
-}

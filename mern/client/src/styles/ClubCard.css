@@ -1,0 +1,27 @@
+.club-card-container {
+    display: flex;
+    flex-direction: column;
+    width: 23em;
+    min-height: 15em;
+    height: fit-content;
+    border: 1px solid #D3D3D3;
+    border-radius: 7px;
+    background-color: white;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 1em 1.5em;
+}
+
+.club-card-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.club-card-container p {
+    margin: 0;
+    color: grey;
+    font-size: 1em;
+    line-height: 1.5;
+}
