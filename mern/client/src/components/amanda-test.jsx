@@ -1,10 +1,25 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
+import ClubCard from './ClubCard';
 import '../styles/amanda-test.css';
-import { Link } from "react-router-dom";
 
 function FilterComponent({ selectedTags, onTagChange }) {
+
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                console.log(response.data);
+                navigate('/');
+            }
+        })
+    }, []);
+
     const tags = [
         "design", "media", "cloud platforms", "programming", "cybersecurity", "community",
         "women in tech", "Hackathons", "professional development", "AI & Data Science",
@@ -12,18 +27,17 @@ function FilterComponent({ selectedTags, onTagChange }) {
     ];
 
     return (
-        <div className="mt-3">
+        <div>
             {tags.map((tag, index) => (
-                <div key={index} className="form-check">
+                <div key={index}>
                     <input
-                        className="form-check-input"
                         type="checkbox"
                         id={`tag-${index}`}
                         value={tag}
                         checked={selectedTags.includes(tag)}
                         onChange={() => onTagChange(tag)}
                     />
-                    <label className="form-check-label" htmlFor={`tag-${index}`}>
+                    <label htmlFor={`tag-${index}`}>
                         {tag}
                     </label>
                 </div>
@@ -92,16 +106,17 @@ function AmandaTest() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
+        <div class="home-clubs">
             <Navbar />
-            <div className="amanda-test-container">
-                <div className="amanda-test-row">
+            <div className="home-container">
+                <div className="home-search-and-cards">
                     {/* Left Sidebar with Search and Filters */}
-                    <div className="col-md-4">
+                    <div className="home-search-division">
                         <h1>Filters</h1>
                         <nav>
                             <form>
                                 <input
+                                    className="home-search-bar"
                                     type="search"
                                     placeholder="Search by club name"
                                     aria-label="Search"
@@ -113,6 +128,7 @@ function AmandaTest() {
                         <div>
                             <button
                                 onClick={toggleFilterVisibility}
+                                className="home-filter-buttons"
                             >
                                 {isFilterVisible ? 'Hide Filters' : 'Show Filters'}
                             </button>
@@ -128,18 +144,19 @@ function AmandaTest() {
                     </div>
 
                     {/* Right Content Area for Clubs */}
-                    <div>
+                    <div className="home-club-cards-container">
                         <h1>Clubs</h1>
-                        <div>
+                        <div className="home-card-grid">
                             {filteredClubs.map((club) => (
-                                <div key={club._id} className="amanda-test-clubcard">
-                                    <Link to={`/${club._id}`}>
-                                        <h3>{club.name}</h3>
-                                    </Link>
-                                    <p>{club.description}</p>
+                                <div key={club._id} className="home-clubcard">
+                                    <ClubCard 
+                                        title={club.name}
+                                        description={club.description}
+                                        club_id={club._id}
+                                    />
                                 </div>
                             ))}
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>

@@ -1,8 +1,64 @@
-.amanda-test-container p {
-    padding: 0;
+.home-clubs {
+    background-color: #fffcf4;
 }
 
-.amanda-test-clubcard {
-    margin-bottom: 2em;
-    background: white;
+.home-elements {
+    text-align: center;
+}
+
+.home-search-and-cards {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.home-search-bar {
+    width: 200px;
+    padding: 5px;
+    font-size: 1em;
+    margin: 0;
+}
+
+.home-filter-buttons {
+    width: 10em;
+}
+
+.home-club-cards-container {
+    padding: 0 2em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-left: 2em;
+}
+
+.home-side-by-side {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.home-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+    gap: 2em; /* Optional: Adds spacing between grid items */
+}
+
+.club-card {
+    width: 23em;
+    height: 15em;
+    border: 1px solid #D3D3D3;
+    border-radius: 7px;
+    background-color: white;
+    box-sizing: border-box;
+    text-align: left;
+    padding: 1em 1.5em;
+}
+
+.club-card p {
+    margin: 0;
+    color: grey;
+    font-size: 1em;
+    line-height: 1.5;
 }
