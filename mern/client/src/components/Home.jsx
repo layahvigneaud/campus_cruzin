@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import ClubCard from './ClubCard';
-import '../styles/amanda-test.css';
+import '../styles/Home.css';
 
 function FilterComponent({ selectedTags, onTagChange }) {
 
