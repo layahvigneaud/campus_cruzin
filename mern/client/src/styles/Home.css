@@ -33,10 +33,6 @@
     margin-left: 2em;
 }
 
-.home-clubcard .save-button {
-    position: relative;
-}
-
 .home-side-by-side {
     display: flex;
     gap: 10px;

@@ -19,6 +19,12 @@
     justify-content: space-between;
 }
 
+.club-card-container .save-button {
+    position: relative;
+    right: 0;
+    top: 0;
+}
+
 .club-card-container p {
     margin: 0;
     color: grey;
