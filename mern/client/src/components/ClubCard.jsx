@@ -9,7 +9,7 @@ function ClubCard({title, description, club_id}) {
         <div className="club-card-container">
             <div className="club-card-information">
                     <div className="club-card-row">
-                        <Link to={`/${club_id}`}>
+                        <Link to={`/club/${club_id}`}>
                             <h3>{title}</h3>
                         </Link>
                         <SaveButton/>

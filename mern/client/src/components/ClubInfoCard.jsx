@@ -3,28 +3,33 @@ import SaveButton from './SaveButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
-function ClubInfoCard(){
+function ClubInfoCard({title, description, tags, moreinfo}) {
+    if(moreinfo === "") {
+        moreinfo = "No additional information available."
+    }
+    const infoLines = moreinfo.split('\n');
     return (
         <div className="club-info-card-container">
             <SaveButton/>
             <div>
-                <h1>ACM Teach LA</h1>
-                <p>ACM Teach LA pairs UCLA students with schools in  Los Angeles to provide free computer science classes. Their goal is to  empower all students with the ability to code, and use it to make a  difference.</p>
-                <Rating/>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                <Rating className="rating"/>
             </div>
             <div>
                 <p>
-                    ACM Teach LA features two main teams: 
-                    <br/>
-                    1. The development team, whose members create learning labs for the schools that Teach LA services.
-                    
-                    2. The curriculum team, whose members teach computer science to local Los Angeles schools on a weekly basis. 
+                    <strong>More Info:</strong> {infoLines.map((line, index) => (
+                        <span key={index}>{line}<br/></span>
+                    ))}
                 </p>
+
                 <p id="club-info-card-descriptors">
-                    <strong>Targeted majors:</strong> Computer Science
+                    <strong>Tags: </strong>
+                    {tags.map((tag, index) => (
+                        <span key={index}>{tag}{index < tags.length - 1 && ', '}</span>
+                    ))}
                     <br/>
-                    
-                    <strong>Category:</strong> Social good
+                    <strong>Most common major:</strong> Computer Science
                     <br/>
                     
                     <strong>Time commitment:</strong> &lt;5 hours/week
@@ -32,8 +37,6 @@ function ClubInfoCard(){
                     
                     <strong>Application Required?:</strong> No
                     <br/>
-                    
-                    <strong>Currently Open to Join?:</strong> Yes
                 </p>
             </div>
         </div>

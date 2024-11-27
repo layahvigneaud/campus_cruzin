@@ -142,6 +142,7 @@ export default Test;
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function FilterComponent({ selectedTags, onTagChange }) {
     const tags = [
@@ -277,7 +278,9 @@ function Test() {
                         <div>
                             {filteredClubs.map((club) => (
                                 <div key={club._id}>
-                                    <h3>{club.name}</h3>
+                                    <Link to={`/club/${club._id}`}>
+                                        <h3>{club.name}</h3>
+                                    </Link>
                                     <p>{club.description}</p>
                                 </div>
                             ))}

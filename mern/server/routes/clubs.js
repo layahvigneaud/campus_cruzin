@@ -13,6 +13,18 @@ router.get('/populate', async (req, res) => {
     }
 });
 
+// Route to get a single club by ID
+router.get('/:clubId', async (req, res) => {
+    const { clubId } = req.params;
+    try {
+        const club = await Club.findById(clubId);
+        res.json(club);
+    } catch (error) {
+        console.error('Error fetching club by ID:', error);
+        res.status(500).json({ message: 'Error fetching club', error });
+    }
+});
+
 // New route to filter clubs by tags
 router.post('/filter', async (req, res) => {
     const { tags } = req.body;
@@ -25,6 +37,7 @@ router.post('/filter', async (req, res) => {
         res.status(500).json({ message: 'Error filtering clubs', error });
     }
 });
+
 
 module.exports = router;
 

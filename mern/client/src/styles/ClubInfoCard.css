@@ -34,3 +34,9 @@
     font-weight: 600;
     color: #FFB703;
 }
+
+.club-info-card-container .rating{
+    position: absolute;
+    left: 2rem;
+    bottom: 1.25rem;
+}

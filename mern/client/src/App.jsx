@@ -25,7 +25,7 @@ function App() {
         {/* protected routes (not logged in)*/}
         <Route path='/homepage' element={<Home />}></Route>
         <Route path='/review' element={<Review/>}></Route>
-        <Route path='/club' element={<Club />}></Route>
+        <Route path='/club/:clubId' element={<Club />}></Route>
         <Route path='/savedclubs' element={<SavedClubs />}></Route>
 
         {/* unprotected routes */}
