@@ -1,4 +1,5 @@
 .navbar {
+    text-align: center;
     background-color: #ffecb4;
     width: 100%;
     padding: 10px;
@@ -6,7 +7,10 @@
     margin-bottom: 40px;
 }
 
-.side-by-side {
+.navbar-side-by-side {
+    display: flex;
+    gap: 10px;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
@@ -17,6 +21,6 @@
     margin: 0;
 }
 
-button:hover {
+.navbar button:hover {
     text-decoration: underline;
 }

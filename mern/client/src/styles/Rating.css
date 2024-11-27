@@ -1,4 +1,5 @@
 .rating {
+    font-family: 'Roboto', sans-serif;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,7 +13,7 @@
     height: 2rem;
     font-size: 0.75rem;
     font-weight: normal;
-    margin-top: 5rem;
+    margin: 0.5rem 0;
 }
 
 .rating img{

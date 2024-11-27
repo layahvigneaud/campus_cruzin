@@ -10,7 +10,6 @@ import Test from './components/test';
 import './styles/global.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import SavedClubs from './components/SavedClubs';
-import AmandaTest from './components/amanda-test';
 
 function App() {
   return (
@@ -31,7 +30,6 @@ function App() {
 
         {/* unprotected routes */}
         <Route path='/test' element={<Test />}></Route>
-        <Route path='/amanda-test' element={<AmandaTest />}></Route>
       </Routes>
     </BrowserRouter>
   )
