@@ -52,3 +52,10 @@
     width: 0.75rem;
     height: 0.75rem;
 }
+
+.card-container h3{
+    font-family: 'Inter';
+    font-size: 0.25rem;
+    font-weight: 400;
+    color: rgb(145, 145, 145);
+}

@@ -14,6 +14,9 @@
     font-size: 0.75rem;
     font-weight: normal;
     margin: 0.5rem 0;
+    position: absolute;
+    left: 2rem;
+    bottom: 1.25rem;
 }
 
 .rating img{
