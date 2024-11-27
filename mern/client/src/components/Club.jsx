@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ReviewCard from './ReviewCard';
 import ClubInfoCard from './ClubInfoCard';
 import '../styles/Club.css';
@@ -66,7 +66,9 @@ function Club() {
                             <option value="1.0">1.0 stars</option>
                             <option value="0.0">0.0 stars</option>
                         </select>
-                        <button className="club-review-submit-button">Submit a Review!</button>
+                        <Link to="/review">
+                            <button className="club-review-submit-button">Submit a Review!</button>
+                        </Link>
                     </div>
                     <div>
                         <ReviewCard/>
