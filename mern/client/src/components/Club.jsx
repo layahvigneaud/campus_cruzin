@@ -76,7 +76,7 @@ function Club() {
     */
     let overallRating = 0;
     let application = 0;
-    let timeCommitment = -1;
+    let timeCommitment = 0;
     let major = '';
     let applicationCount = [0, 0];
     let majorCounts = new Map();
@@ -103,7 +103,7 @@ function Club() {
     //update application status based on highest number of responses
     application = applicationCount[0] > applicationCount[1] ? "Yes" : "No";
     overallRating = length ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
-    timeCommitment = length ? (Math.floor(timeCommitment / length)) : timeCommitment;
+    timeCommitment = length ? (Math.floor(timeCommitment / length)) : -1;
 
     let maxCount = 0;
     for(let [key, value] of majorCounts) {
