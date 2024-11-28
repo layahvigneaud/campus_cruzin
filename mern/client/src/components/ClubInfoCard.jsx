@@ -3,14 +3,14 @@ import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
-function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo}) {
+function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo, isSaved, club_id}) {
     if(moreinfo === "") {
         moreinfo = "No additional information available."
     }
     const infoLines = moreinfo.split('\n');
     return (
         <div className="club-info-card-container">
-            <SaveClubButton/>
+            <SaveClubButton saveState={isSaved} clubId={club_id}/>
             <div>
                 <h1>{title}</h1>
                 <p>{description}</p>

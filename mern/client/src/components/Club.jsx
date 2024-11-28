@@ -10,6 +10,7 @@ import axios from 'axios';
 function Club() {
     const { clubId } = useParams(); //gets the club ID from the URL
     const [club, setClub] = useState(null); //stores the club data
+    const [savedClubs, setSavedClubs] = useState([]);
     const [filterRating, setFilterRating] = useState('');
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -23,6 +24,11 @@ function Club() {
                 const response = await axios.get(`http://localhost:3001/clubs/${clubId}`);
                 console.log('Club data:', response.data);
                 setClub(response.data);
+
+                const res = await axios.get('http://localhost:3001/auth/user', { withCredentials: true });
+                console.log(res.data.user.savedClubs);
+                const savedClubs = res.data.user.savedClubs;
+                setSavedClubs(savedClubs);
             } catch (error) {
                 console.error('Error fetching club:', error);
                 setError(error.message);
@@ -118,6 +124,8 @@ function Club() {
                         time = {timeCommitment}
                         application = {application}
                         moreinfo={club.hasOwnProperty('moreInfo') ? club.moreInfo : ""}
+                        isSaved={savedClubs.includes(clubId)}
+                        club_id={clubId}
                     />
                 </div>
                 <div className="club-reviews-container">
