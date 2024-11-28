@@ -5,10 +5,8 @@ import Rating from './Rating';
 import axios from 'axios';
 import '../styles/ClubCard.css';
 
-function ClubCard({title, description, club_id}) {
+function ClubCard({title, description, club_id, isSaved}) {
     const [reviews, setReviews] = useState([]);
-    const [isSaved, setIsSaved] = useState(false);
-    const [loading, setLoading] = useState(true);
     useEffect(() => {
         const fetchReviews = async () => {
             try {
@@ -20,23 +18,6 @@ function ClubCard({title, description, club_id}) {
         };
         fetchReviews();
     }, [club_id]);
-
-    useEffect(() => {
-        const getIsSavedClub = async () => {
-            try {
-                const res = await axios.get('http://localhost:3001/auth/user');
-                const savedClubs = res.data.user.savedClubs;
-                const isClubSaved = savedClubs.includes(club_id);
-                setIsSaved(isClubSaved);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching reviews:', error);
-            }
-        };
-        getIsSavedClub();
-    }, [club_id]);
-
-    if (loading) return <p>Loading...</p>;
 
     let overallRating = 0;
     let length = reviews.length;
