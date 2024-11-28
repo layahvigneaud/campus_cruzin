@@ -8,14 +8,14 @@ import "../styles/Review.css";
 const InterviewForm = () => {
     
     const applicationRequiredOptions = [
-        { value: "yes", label: "Yes" },
-        { value: "no", label: "No" },
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
     ];
 
     const offeredPositionOptions = [
-        { value: "yes", label: "Yes" },
-        { value: "no", label: "No" },
-        { value: "pending", label: "Pending" }
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+        { value: "Pending", label: "Pending" }
     ];
 
     const timeCommitmentOptions = [

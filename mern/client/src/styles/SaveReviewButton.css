@@ -1,0 +1,14 @@
+.save-review-button {
+    width: 1rem;
+    height: 1rem;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.save-review-button img{
+    width: 1rem;
+    height: 1rem;
+}

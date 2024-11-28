@@ -48,6 +48,7 @@ function FilterComponent({ selectedTags, onTagChange }) {
 
 function Home() {
     const [clubs, setClubs] = useState([]);
+    const [savedClubs, setSavedClubs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [selectedTags, setSelectedTags] = useState([]);
@@ -66,6 +67,11 @@ function Home() {
         try {
             setLoading(true);
             let response;
+
+            const res = await axios.get('http://localhost:3001/auth/user', { withCredentials: true });
+            console.log(res.data.user.savedClubs);
+            const savedClubs = res.data.user.savedClubs;
+            setSavedClubs(savedClubs);
 
             if (tags.length === 0) {
                 response = await axios.get('http://localhost:3001/clubs/populate');
@@ -153,6 +159,7 @@ function Home() {
                                         title={club.name}
                                         description={club.description}
                                         club_id={club._id}
+                                        isSaved={savedClubs.includes(club._id)}
                                     />
                                 </div>
                             ))}

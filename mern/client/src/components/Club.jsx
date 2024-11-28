@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import BackButton from './BackButton';
 import ReviewCard from './ReviewCard';
 import ClubInfoCard from './ClubInfoCard';
 import '../styles/Club.css';
@@ -9,6 +10,8 @@ import axios from 'axios';
 function Club() {
     const { clubId } = useParams(); //gets the club ID from the URL
     const [club, setClub] = useState(null); //stores the club data
+    const [savedClubs, setSavedClubs] = useState([]);
+    const [savedReviews, setSavedReviews] = useState([]);
     const [filterRating, setFilterRating] = useState('');
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,6 +25,14 @@ function Club() {
                 const response = await axios.get(`http://localhost:3001/clubs/${clubId}`);
                 console.log('Club data:', response.data);
                 setClub(response.data);
+
+                const res = await axios.get('http://localhost:3001/auth/user', { withCredentials: true });
+                console.log(res.data.user.savedClubs);
+                const savedClubs = res.data.user.savedClubs;
+                setSavedClubs(savedClubs);
+
+                const savedReviews = res.data.user.savedReviews;
+                setSavedReviews(savedReviews);
             } catch (error) {
                 console.error('Error fetching club:', error);
                 setError(error.message);
@@ -90,7 +101,7 @@ function Club() {
 
     //update application status based on highest number of responses
     application = applicationCount[0] > applicationCount[1] ? "Yes" : "No";
-    overallRating = Math.floor(overallRating / length);
+    overallRating = length != 0 ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
     timeCommitment = Math.floor(timeCommitment / length);
 
     let maxCount = 0;
@@ -106,6 +117,7 @@ function Club() {
         <div>
             <Navbar/>
             <div className="club-content-container">
+                <BackButton/>
                 <div>
                     <ClubInfoCard
                         title = {club.name}
@@ -116,6 +128,8 @@ function Club() {
                         time = {timeCommitment}
                         application = {application}
                         moreinfo={club.hasOwnProperty('moreInfo') ? club.moreInfo : ""}
+                        isSaved={savedClubs.includes(clubId)}
+                        club_id={clubId}
                     />
                 </div>
                 <div className="club-reviews-container">
@@ -148,6 +162,8 @@ function Club() {
                                 position={review.position}
                                 rating={review.overallRating}
                                 date={review.createdAt}
+                                review_id={review._id}
+                                isSaved={savedReviews.includes(review._id)}
                             />
                         ))}
                     </div>

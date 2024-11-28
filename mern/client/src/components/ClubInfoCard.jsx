@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
-import SaveButton from './SaveButton';
+import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
-function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo}) {
+function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo, isSaved, club_id}) {
     if(moreinfo === "") {
         moreinfo = "No additional information available."
+    }
+    if (!club_id)
+    {
+        return (
+            <h1>Club ID not provided!</h1>
+        );
     }
     const infoLines = moreinfo.split('\n');
     return (
         <div className="club-info-card-container">
-            <SaveButton/>
+            <SaveClubButton saveState={isSaved} clubId={club_id}/>
             <div>
                 <h1>{title}</h1>
                 <p>{description}</p>
