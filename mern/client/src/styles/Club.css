@@ -5,6 +5,11 @@
     padding-top: 0;
 }
 
+.club-content-container .back-button {
+    justify-content: flex-start;
+    margin-top: 0;
+}
+
 .club-review-card{
     margin: 5rem;
 }

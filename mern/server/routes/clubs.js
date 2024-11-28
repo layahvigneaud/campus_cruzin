@@ -7,7 +7,6 @@ router.get('/populate', async (req, res) => {
     try {
         const clubs = await Club.find(); 
         res.json(clubs);
-        console.log(clubs);
     } catch (error) {
         res.status(500).json({ message: 'Error retrieving clubs', error });
     }

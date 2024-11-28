@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import BackButton from './BackButton';
 import ReviewCard from './ReviewCard';
 import ClubInfoCard from './ClubInfoCard';
 import '../styles/Club.css';
@@ -90,7 +91,7 @@ function Club() {
 
     //update application status based on highest number of responses
     application = applicationCount[0] > applicationCount[1] ? "Yes" : "No";
-    overallRating = Math.floor(overallRating / length);
+    overallRating = length != 0 ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
     timeCommitment = Math.floor(timeCommitment / length);
 
     let maxCount = 0;
@@ -106,6 +107,7 @@ function Club() {
         <div>
             <Navbar/>
             <div className="club-content-container">
+                <BackButton/>
                 <div>
                     <ClubInfoCard
                         title = {club.name}
