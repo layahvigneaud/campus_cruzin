@@ -32,10 +32,10 @@ function ClubInfoCard({title, description, tags, major, rating, time, applicatio
                         <span key={index}>{tag}{index < tags.length - 1 && ', '}</span>
                     ))}
                     <br/>
-                    <strong>Most common major:</strong> {major}
+                    <strong>Most common major:</strong> {major !== "" ? `${major}` : "N/A"}
                     <br/>
                     
-                    <strong>Time commitment:</strong> ~{time} hours/week
+                    <strong>Time commitment:</strong> {time !== -1 ? `~${time} hours/week` : "N/A"}
                     <br/>
                     
                     <strong>Application Required?:</strong> {application}
