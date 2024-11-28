@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import SaveButton from './SaveButton';
+import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import axios from 'axios';
 import '../styles/ClubCard.css';
 
-function ClubCard({title, description, club_id}) {
+function ClubCard({title, description, club_id, isSaved}) {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                console.log('Fetching reviews for club with ID:', club_id);
                 const response = await axios.get(`http://localhost:3001/reviews/${club_id}`);
                 setReviews(response.data);
-                console.log('Reviews:', response.data);
             } catch (error) {
                 console.error('Error fetching reviews:', error);
             }
         };
-
         fetchReviews();
     }, [club_id]);
-
 
     let overallRating = 0;
     let length = reviews.length;
@@ -32,6 +28,13 @@ function ClubCard({title, description, club_id}) {
 
     overallRating = length != 0 ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
 
+    if (!club_id)
+    {
+        return (
+            <h1>Club ID not provided!</h1>
+        );
+    }
+
     return (
         <div className="club-card-container">
             <div className="club-card-information">
@@ -39,7 +42,7 @@ function ClubCard({title, description, club_id}) {
                         <Link to={`/club/${club_id}`}>
                             <h3>{title}</h3>
                         </Link>
-                        <SaveButton/>
+                        <SaveClubButton saveState={isSaved} clubId={club_id}/>
                     </div>
                 <p>{description}</p>
             </div>
