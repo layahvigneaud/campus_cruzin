@@ -29,7 +29,7 @@ function ReviewCard({description, major, application, time, position, rating, da
                         <br/>
                         Time commitment: {time} hour{time === '1' ? '' : 's'}/week
                         <br/>
-                        Position: {position}
+                        Position: {position !== "" ? position : "N/A"}
                     </p>
                     <Rating value={rating.toFixed(1)}/>
                 </div>
