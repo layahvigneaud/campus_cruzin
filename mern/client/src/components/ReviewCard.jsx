@@ -6,6 +6,11 @@ import DislikeIcon from '../assets/dislike.svg';
 import SaveReviewButton from './SaveReviewButton';
 
 function ReviewCard({description, major, application, time, position, rating, date, review_id, isSaved}) {
+    if (!review_id) {
+        return (
+            <h1>Review ID not provided!</h1>
+        )
+    }
     return (
         <div>
             <div className="reviewcard-container">

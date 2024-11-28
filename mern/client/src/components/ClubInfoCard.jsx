@@ -7,6 +7,12 @@ function ClubInfoCard({title, description, tags, major, rating, time, applicatio
     if(moreinfo === "") {
         moreinfo = "No additional information available."
     }
+    if (!club_id)
+    {
+        return (
+            <h1>Club ID not provided!</h1>
+        );
+    }
     const infoLines = moreinfo.split('\n');
     return (
         <div className="club-info-card-container">

@@ -28,6 +28,13 @@ function ClubCard({title, description, club_id, isSaved}) {
 
     overallRating = length != 0 ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
 
+    if (!club_id)
+    {
+        return (
+            <h1>Club ID not provided!</h1>
+        );
+    }
+
     return (
         <div className="club-card-container">
             <div className="club-card-information">
