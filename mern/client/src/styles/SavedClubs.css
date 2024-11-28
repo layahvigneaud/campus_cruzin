@@ -16,3 +16,7 @@
     font-weight: 600;
     font-family: 'Inter', sans-serif;
 }
+
+.saved-clubs-content-container .back-button {
+    justify-content: flex-start;
+}

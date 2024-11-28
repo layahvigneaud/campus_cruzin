@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Navbar from './Navbar';
 import ClubInfoCard from './ClubInfoCard';
+import BackButton from './BackButton';
 import '../styles/SavedClubs.css';
 
 function SavedClubs() {
@@ -93,6 +94,7 @@ function SavedClubs() {
         <div>
             <Navbar/>
             <div className="saved-clubs-content-container">
+                <BackButton/>
                 <h1>Your Saved Clubs</h1>
                 {clubs.length > 0 ? 
                     clubs.map((club) => (

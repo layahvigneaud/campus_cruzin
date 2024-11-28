@@ -38,4 +38,16 @@ router.get('/:clubId', async (req, res) => {
     }
 });
 
+router.get('/getReview/:reviewId', async (req, res) => {
+    const { reviewId } = req.params;
+
+    try {
+        const review = await Review.findById({ _id: reviewId });
+        res.json(review);
+    } catch (error) {
+        console.error('Error fetching review:', error);
+        res.status(500).json({ message: 'Error fetching review', error });
+    }
+});
+
 module.exports = router;
