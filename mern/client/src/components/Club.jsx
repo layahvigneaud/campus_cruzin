@@ -11,6 +11,7 @@ function Club() {
     const { clubId } = useParams(); //gets the club ID from the URL
     const [club, setClub] = useState(null); //stores the club data
     const [savedClubs, setSavedClubs] = useState([]);
+    const [savedReviews, setSavedReviews] = useState([]);
     const [filterRating, setFilterRating] = useState('');
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,6 +30,9 @@ function Club() {
                 console.log(res.data.user.savedClubs);
                 const savedClubs = res.data.user.savedClubs;
                 setSavedClubs(savedClubs);
+
+                const savedReviews = res.data.user.savedReviews;
+                setSavedReviews(savedReviews);
             } catch (error) {
                 console.error('Error fetching club:', error);
                 setError(error.message);
@@ -158,6 +162,8 @@ function Club() {
                                 position={review.position}
                                 rating={review.overallRating}
                                 date={review.createdAt}
+                                review_id={review._id}
+                                isSaved={savedReviews.includes(review._id)}
                             />
                         ))}
                     </div>

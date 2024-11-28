@@ -3,25 +3,15 @@ import Rating from './Rating';
 import '../styles/ReviewCard.css';
 import LikeIcon from '../assets/like.svg';
 import DislikeIcon from '../assets/dislike.svg';
+import SaveReviewButton from './SaveReviewButton';
 
-function ReviewCard({description, major, application, time, position, rating, date}) {
-    const [likes, setLikes] = useState(10);
-    const [dislikes, setDislikes] = useState(0);
-
-    function handleClick(ratingType) {
-        if(ratingType === "like") {
-        }
-        else{
-        }
-        {/* like or dislike and update database accordingly*/}
-    }
-
+function ReviewCard({description, major, application, time, position, rating, date, review_id, isSaved}) {
     return (
         <div>
             <div className="reviewcard-container">
                 <div className="reviewcard-header">
                     <h3>posted on: {date.substring(0, 10)}</h3>
-                    <Rating value={rating.toFixed(1)}/>
+                    <SaveReviewButton saveState={isSaved} reviewId={review_id}/>
                 </div>
                 <div className="reviewcard-content">
                     <p className="reviewcard-contents">
@@ -36,16 +26,7 @@ function ReviewCard({description, major, application, time, position, rating, da
                         <br/>
                         Position: {position}
                     </p>
-                    <div style={{display: 'flex', flexDirection: 'row'}}>
-                        <button onClick={handleClick("like")} className="reviewcard-rate-button">
-                            <img src={LikeIcon}/>
-                            {likes} {/* number of likes -> update based on database*/}
-                        </button>
-                        <button onClick={handleClick("like")} className="reviewcard-rate-button">
-                            <img src={DislikeIcon}/>
-                            {dislikes} {/* number of dislikes -> populate based on database*/}
-                        </button>
-                    </div>
+                    <Rating value={rating.toFixed(1)}/>
                 </div>
             </div>
         </div>

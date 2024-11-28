@@ -185,4 +185,53 @@ router.post('/unsaveClub', async (req, res) => {
         return res.json({ status: false, message: "Something went wrong while unsaving clubs!"});    }
 })
 
+router.post('/saveReview', async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token)
+            return res.status(401).json({ error: 'Token not provided' });
+
+        const decoded = await jwt.verify(token, process.env.KEY);
+        const username = decoded.username;
+        const { reviewId } = req.body;
+
+        const result = await UserModel.updateOne(
+            { username },
+            { $addToSet: { savedReviews: reviewId } }
+        );
+
+        if (result.modifiedCount > 0)
+            return res.json({ status: true, message: "Review successfully saved!"});
+        else 
+            return res.json({ status: false, message: "Something went wrong while saving review!"});
+    } catch (err) {
+        console.log(err);
+        return res.json({ status: false, message: "Something went wrong while saving review!"});
+    }
+})
+
+router.post('/unsaveReview', async (req, res) => {
+    try {
+        const token = req.cookies.token;
+        if (!token)
+            return res.status(401).json({ error: 'Token not provided' });
+
+        const decoded = await jwt.verify(token, process.env.KEY);
+        const username = decoded.username;
+        const { reviewId } = req.body;
+
+        const result = await UserModel.updateOne(
+            { username },
+            { $pull: { savedReviews: reviewId } }
+        );
+
+        if (result.modifiedCount > 0)
+            return res.json({ status: true, message: "Review successfully unsaved!"});
+        else 
+            return res.json({ status: false, message: "Something went wrong while unsaving review!"});
+    } catch (err) {
+        console.log(err);
+        return res.json({ status: false, message: "Something went wrong while unsaving review!"});    }
+})
+
 module.exports = router;
