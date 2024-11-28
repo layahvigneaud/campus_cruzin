@@ -34,7 +34,7 @@ function ReviewCard({description, major, application, time, position, rating, da
                         <br/>
                         Time commitment: {time} hour{time === '1' ? '' : 's'}/week
                         <br/>
-                        Position: {position}
+                        Position: {position !== "" ? position : "N/A"}
                     </p>
                     <div style={{display: 'flex', flexDirection: 'row'}}>
                         <button onClick={handleClick("like")} className="reviewcard-rate-button">
