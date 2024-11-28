@@ -31,9 +31,17 @@
     bottom: 0;
 }
 
+.club-card-container h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
 .club-card-container p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 450;
     margin: 0;
     color: grey;
-    font-size: 1em;
+    font-size: 0.8em;
     line-height: 1.5;
 }

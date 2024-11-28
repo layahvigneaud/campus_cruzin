@@ -16,6 +16,7 @@ function Club() {
     const [reviews, setReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    axios.defaults.withCredentials = true;
     
     //get club data from the server
     useEffect(() => {
@@ -101,8 +102,8 @@ function Club() {
 
     //update application status based on highest number of responses
     application = applicationCount[0] > applicationCount[1] ? "Yes" : "No";
-    overallRating = length != 0 ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
-    timeCommitment = length != 0 ? (Math.floor(timeCommitment / length)) : timeCommitment;
+    overallRating = length ? ((overallRating/length).toFixed(1)) : overallRating.toFixed(1);
+    timeCommitment = length ? (Math.floor(timeCommitment / length)) : timeCommitment;
 
     let maxCount = 0;
     for(let [key, value] of majorCounts) {
