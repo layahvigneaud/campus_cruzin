@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import SaveButton from './SaveButton';
+import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import axios from 'axios';
 import '../styles/ClubCard.css';
@@ -39,7 +39,7 @@ function ClubCard({title, description, club_id}) {
                         <Link to={`/club/${club_id}`}>
                             <h3>{title}</h3>
                         </Link>
-                        <SaveButton/>
+                        <SaveClubButton/>
                     </div>
                 <p>{description}</p>
             </div>

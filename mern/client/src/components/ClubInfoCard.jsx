@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SaveButton from './SaveButton';
+import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
@@ -10,7 +10,7 @@ function ClubInfoCard({title, description, tags, major, rating, time, applicatio
     const infoLines = moreinfo.split('\n');
     return (
         <div className="club-info-card-container">
-            <SaveButton/>
+            <SaveClubButton/>
             <div>
                 <h1>{title}</h1>
                 <p>{description}</p>

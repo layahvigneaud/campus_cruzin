@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import UnsavedIcon from '../assets/emptybookmark.svg';
-import '../styles/SaveButton.css';
+import '../styles/SaveClubButton.css';
 
-function SaveButton() {
+function SaveClubButton() {
     const [saved, setSaved] = useState(false); {/* set to true based on get request from database */}
 
     const handleClick = () => {
@@ -10,11 +10,11 @@ function SaveButton() {
     }
 
     return (
-        <button onClick={ handleClick } className="save-button">
+        <button onClick={ handleClick } className="save-club-button">
             {/* save icon based on save status */}
             <img src={saved ? UnsavedIcon : UnsavedIcon}/>
         </button>
     );
 }
 
-export default SaveButton;
+export default SaveClubButton;

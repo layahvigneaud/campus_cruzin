@@ -1,4 +1,4 @@
-.save-button {
+.save-club-button {
     width: 1rem;
     height: 1rem;
     align-items: center;
@@ -11,7 +11,7 @@
     top: 1.25rem;
 }
 
-.save-button img{
+.save-club-button img{
     width: 1rem;
     height: 1rem;
 }
