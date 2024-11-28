@@ -3,7 +3,7 @@ import '../styles/ReviewCard.css';
 import LikeIcon from '../assets/like.svg';
 import DislikeIcon from '../assets/dislike.svg';
 
-function ReviewCard() {
+function ReviewCard({description, major, application, time, position, rating, date}) {
     const [likes, setLikes] = useState(10);
     const [dislikes, setDislikes] = useState(0);
 
@@ -18,18 +18,18 @@ function ReviewCard() {
     return (
         <div>
             <div className="card-container">
-                <h1>username</h1>
+                <h3>posted on: {date.substring(0, 10)}</h3>
                 <p className="review-contents">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint  occaecat cupidatat non proident, sunt in culpa qui officia deserunt  mollit anim id est laborum.
+                    {description}
                 </p>
                 <p className="demographics">
-                    Major: Computer Science
+                    Major: {major}
                     <br/>
-                    Application Required? No
+                    Application Required? {application}
                     <br/>
-                    Time commitment: 1 hour/week
+                    Time commitment: {time} hour{time === '1' ? '' : 's'}/week
                     <br/>
-                    Position: Frontend Developer
+                    Position: {position}
                 </p>
                 <div style={{display: 'flex', flexDirection: 'row'}}>
                     <button onClick={handleClick("like")} className="rate-button">

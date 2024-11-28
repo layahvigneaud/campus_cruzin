@@ -15,8 +15,8 @@ function ClubCard({title, description, club_id}) {
                         <SaveButton/>
                     </div>
                 <p>{description}</p>
-                <Rating/>
             </div>
+            <Rating/>
         </div>
     );
 }

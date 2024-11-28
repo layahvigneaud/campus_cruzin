@@ -25,6 +25,12 @@
     top: 0;
 }
 
+.club-card-container .rating {
+    position: relative;
+    left: 0;
+    bottom: 0;
+}
+
 .club-card-container p {
     margin: 0;
     color: grey;

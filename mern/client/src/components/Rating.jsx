@@ -1,11 +1,11 @@
 import Star from '../assets/star.svg'
 import '../styles/Rating.css';
 
-function Rating() {
+function Rating({value}) {
     return (
         <div className="rating">
             {/* update rating using get request from database */}
-            5.0
+            {value}.0
             <img src={Star}/>
         </div>
     );

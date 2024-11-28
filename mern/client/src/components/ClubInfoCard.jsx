@@ -3,7 +3,7 @@ import SaveButton from './SaveButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
-function ClubInfoCard({title, description, tags, moreinfo}) {
+function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo}) {
     if(moreinfo === "") {
         moreinfo = "No additional information available."
     }
@@ -14,7 +14,10 @@ function ClubInfoCard({title, description, tags, moreinfo}) {
             <div>
                 <h1>{title}</h1>
                 <p>{description}</p>
-                <Rating className="rating"/>
+                <Rating 
+                    className="rating"
+                    value={rating}
+                />
             </div>
             <div>
                 <p>
@@ -29,13 +32,13 @@ function ClubInfoCard({title, description, tags, moreinfo}) {
                         <span key={index}>{tag}{index < tags.length - 1 && ', '}</span>
                     ))}
                     <br/>
-                    <strong>Most common major:</strong> Computer Science
+                    <strong>Most common major:</strong> {major}
                     <br/>
                     
-                    <strong>Time commitment:</strong> &lt;5 hours/week
+                    <strong>Time commitment:</strong> ~{time} hours/week
                     <br/>
                     
-                    <strong>Application Required?:</strong> No
+                    <strong>Application Required?:</strong> {application}
                     <br/>
                 </p>
             </div>
