@@ -25,7 +25,8 @@
 .reviewcard-container p {
     font-family: 'Inter';
     font-size: 0.75rem;
-    color: #757575
+    color: #757575;
+    font-weight: 400;
 }
 
 .reviewcard-header {
