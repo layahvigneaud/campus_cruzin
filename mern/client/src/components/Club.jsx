@@ -143,7 +143,7 @@ function Club() {
                             onChange={handleChangeFilter}
                             id="club-rating-filter"
                         >
-                            <option value="" disabled selected>Filter by rating</option>
+                            <option value="" selected>All ratings</option>
                             <option value="5.0">5.0 stars</option>
                             <option value="4.0">4.0 stars</option>
                             <option value="3.0">3.0 stars</option>
