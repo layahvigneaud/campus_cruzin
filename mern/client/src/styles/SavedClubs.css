@@ -20,3 +20,10 @@
 .saved-clubs-content-container .back-button {
     justify-content: flex-start;
 }
+
+.saved-clubs-content-container .h2 {
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
