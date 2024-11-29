@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Rating from './Rating';
 import '../styles/ReviewCard.css';
-import LikeIcon from '../assets/like.svg';
-import DislikeIcon from '../assets/dislike.svg';
 import SaveReviewButton from './SaveReviewButton';
 
 function ReviewCard({description, major, application, time, position, rating, date, review_id, isSaved}) {

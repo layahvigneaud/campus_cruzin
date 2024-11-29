@@ -7,9 +7,11 @@ import Club from './components/Club';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 import Test from './components/test';
+import SavedClubs from './components/SavedClubs';
+import SavedReviews from './components/SavedReviews';
 import './styles/global.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import SavedClubs from './components/SavedClubs';
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
         <Route path='/review' element={<Review/>}></Route>
         <Route path='/club/:clubId' element={<Club />}></Route>
         <Route path='/savedclubs' element={<SavedClubs />}></Route>
+        <Route path='/savedreviews' element={<SavedReviews />}></Route>
 
         {/* unprotected routes */}
         <Route path='/test' element={<Test />}></Route>

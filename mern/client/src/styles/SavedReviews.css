@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.saved-reviews-content-container {
+    padding: 5rem;
+    padding-top: 0;
+}
+
+.saved-reviews-content-container>* {
+    margin-bottom: 2rem;
+}
+
+.saved-reviews-content-container h1{
+    margin: 0;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+}
+
+.saved-reviews-content-container .reviewcard-container h3{
+    font-family: 'Inter';
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(145, 145, 145);
+}
+
+.saved-reviews-content-container .reviewcard-container p {
+    font-family: 'Inter';
+    font-size: 0.75rem;
+    color: #757575
+}
+
+.saved-reviews-content-container .back-button {
+    justify-content: flex-start;
+}
