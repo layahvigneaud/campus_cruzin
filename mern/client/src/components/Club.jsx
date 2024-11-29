@@ -66,6 +66,7 @@ function Club() {
 
     const handleChangeFilter = event => {
         setFilterRating(event.target.value);
+        console.log('Filtering reviews with rating:', event.target.value);
     }
 
     /*get average sentiment for:
@@ -142,6 +143,7 @@ function Club() {
                             onChange={handleChangeFilter}
                             id="club-rating-filter"
                         >
+                            <option value="" selected>All ratings</option>
                             <option value="5.0">5.0 stars</option>
                             <option value="4.0">4.0 stars</option>
                             <option value="3.0">3.0 stars</option>
@@ -154,7 +156,9 @@ function Club() {
                         </Link>
                     </div>
                     <div>
-                        {reviews.map(review => (
+                        {reviews
+                            .filter(review => filterRating === '' || review.overallRating === parseInt(filterRating))
+                            .map(review => (
                             <ReviewCard
                                 description={review.description}
                                 major={review.major}
