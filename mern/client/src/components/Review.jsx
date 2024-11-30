@@ -40,7 +40,6 @@ const InterviewForm = () => {
         { value: 5, label: "5" },
     ];  
 
-    const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [club, setClub] = useState("");
@@ -52,6 +51,17 @@ const InterviewForm = () => {
     const [description, setDescription] = useState("");
     const [major, setMajor] = useState("");
     const [overallRating, setOverallRating] = useState(overallRatingOptions[0]);
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                navigate('/');
+            }
+        })
+    }, []);
 
     useEffect(() => {
         const getClubs = async () => {

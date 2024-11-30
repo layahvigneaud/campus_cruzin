@@ -30,8 +30,6 @@ function App() {
         <Route path='/club/:clubId' element={<Club />}></Route>
         <Route path='/savedclubs' element={<SavedClubs />}></Route>
         <Route path='/savedreviews' element={<SavedReviews />}></Route>
-
-        {/* unprotected routes */}
         <Route path='/test' element={<Test />}></Route>
       </Routes>
     </BrowserRouter>
