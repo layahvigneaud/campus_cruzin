@@ -2,6 +2,15 @@
     background-color: #fffcf4;
 }
 
+.home-container h1 {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 1rem;
+}
+
+.home-container label, input {
+    font-family: 'Inter', sans-serif;
+}
+
 .home-elements {
     text-align: center;
 }
