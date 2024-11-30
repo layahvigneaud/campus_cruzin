@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import UnsavedIcon from '../assets/emptybookmark.svg';
-import SavedIcon from '../assets/filledinbookmark.svg';
+import UnsavedIcon from '../assets/emptyheart.svg';
+import SavedIcon from '../assets/filledheart.svg';
 import axios from 'axios';
 import '../styles/SaveReviewButton.css';
 
