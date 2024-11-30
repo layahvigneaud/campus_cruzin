@@ -14,7 +14,6 @@ input.range {
     border: 2px solid #b4b5b5;
     border-radius: 20px;
     padding: 30px;
-    margin: 50px;  
     max-width: 800px;
     box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.1);
 }
@@ -23,14 +22,12 @@ input.range {
     margin: 2em;
 }
 
-.review-container {
+.review-form-container {
     height: 100%;
     display: flex;           
-    justify-content: center;
-    align-items: center;      
+    justify-content: center;      
     background-color: #fbf9f3;
-    padding-top: 5vh
-
+    padding-top: 0.5rem;
 }
 
 .review-container .back-button{
@@ -43,11 +40,11 @@ input.range {
 
 /* Optionally, consider using viewport height (vh) for split-screen height adjustments */
 @media (min-width: 100px) and (min-height: 100px) {
-.review-container{
-        padding: 5vh;  /* Padding adjusts to viewport height */
-        margin: 5vh;   /* Margin adjusts to viewport height */
+    .review-form-container{
+            padding: 5vh;  /* Padding adjusts to viewport height */
+            margin: 5vh;   /* Margin adjusts to viewport height */
+        }
     }
-}
 
 .asterisk{
     color: #4475be;
@@ -56,7 +53,7 @@ input.range {
 }
 
 
-p{
+p {
     color: #024363;
     font-family: 'Secular One', sans-serif;
     font-size: larger;
@@ -75,6 +72,7 @@ p{
   box-sizing: border-box; /* so padding doesn't affect the width */
   outline: none;
   transition: border-color 0.3s ease; 
+  margin-bottom: 1rem;
 }
 .s-input:focus {
     border-color: #4687f6; /* Change border color when focused */
@@ -90,7 +88,7 @@ textarea {
     box-sizing: border-box; /* so padding doesn't affect the width */
     outline: none;
     transition: border-color 0.3s ease; 
-    }
+}
 
 
 label {

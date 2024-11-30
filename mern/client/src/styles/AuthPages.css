@@ -20,6 +20,10 @@
     margin: 1rem 0;
 }
 
+.auth-form .back-button {
+    margin: 2rem 0 0 2rem;
+}
+
 .auth-form .reset-password {
     margin-top: 3rem;
 }

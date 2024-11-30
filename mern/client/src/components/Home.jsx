@@ -141,7 +141,7 @@ function Home() {
                             {isFilterVisible && (
                                 <div>
                                     <FilterComponent selectedTags={selectedTags} onTagChange={handleTagChange} />
-                                    <button onClick={handleFilterClick}>
+                                    <button className="home-filter-buttons" onClick={handleFilterClick}>
                                         Apply Filters
                                     </button>
                                 </div>

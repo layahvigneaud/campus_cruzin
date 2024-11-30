@@ -30,12 +30,13 @@ form {
 }
 
 button {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1em;
-    font-weight:bold;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
     margin: 0.5rem 0;
+    padding: 0 0.5rem;
     height: 2em;
-    width: 7em;
+    width: fit-content;
     border-radius: 0.5rem;
     border: 0.075em solid;
     background-color: #FFB703;
