@@ -6,20 +6,6 @@ import ClubCard from './ClubCard';
 import '../styles/Home.css';
 
 function FilterComponent({ selectedTags, onTagChange }) {
-
-    const navigate = useNavigate();
-    axios.defaults.withCredentials = true;
-
-    useEffect(() => {
-        axios.get('http://localhost:3001/auth/verify')
-        .then(response => {
-            if (!response.data.status) {
-                console.log(response.data);
-                navigate('/');
-            }
-        })
-    }, []);
-
     const tags = [
         "design", "media", "cloud platforms", "programming", "cybersecurity", "community",
         "women in tech", "Hackathons", "professional development", "AI & Data Science",
@@ -54,6 +40,18 @@ function Home() {
     const [selectedTags, setSelectedTags] = useState([]);
     const [isFilterVisible, setIsFilterVisible] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                console.log(response.data);
+                navigate('/');
+            }
+        })
+    }, []);
 
     const handleTagChange = (tag) => {
         setSelectedTags((prevSelectedTags) =>

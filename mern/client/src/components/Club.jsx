@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import BackButton from './BackButton';
 import ReviewCard from './ReviewCard';
 import ClubInfoCard from './ClubInfoCard';
@@ -17,6 +17,16 @@ function Club() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                navigate('/');
+            }
+        })
+    }, []);
     
     //get club data from the server
     useEffect(() => {

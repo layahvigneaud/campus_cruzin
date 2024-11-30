@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from './Navbar';
 import ClubInfoCard from './ClubInfoCard';
@@ -9,7 +10,17 @@ function SavedClubs() {
     const [clubs, setClubs] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
     axios.defaults.withCredentials = true;
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/auth/verify')
+        .then(response => {
+            if (!response.data.status) {
+                navigate('/');
+            }
+        })
+    }, []);
 
     useEffect(() => {
         const fetchSavedClubs = async () => {
