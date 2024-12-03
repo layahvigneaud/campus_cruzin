@@ -29,7 +29,7 @@ Open a new terminal and then split the terminal.
      npm i
      npm start
 
-**Update the .env file:**
+**Add and Update an .env file in mern/server:**
 
      MONGODB_USER_URL=
      PORT="3001"
@@ -37,9 +37,9 @@ Open a new terminal and then split the terminal.
      GMAIL_PASS=
      GMAIL=
      
-     /*MONGO_USER_URL is the MongoDB URI
-     KEY is sequence of characters used to sign the token
-     GMAIL_PASS is the app password generated from GMAIL*/
+     # MONGO_USER_URL is the MongoDB URI
+     # KEY is sequence of characters used to sign the token
+     # GMAIL_PASS is the app password generated from GMAIL
 
 **NOTE:** _Make sure you create an account with an @ucla.edu email._
 
