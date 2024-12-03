@@ -24,8 +24,8 @@
 }
 
 .home-search-bar {
-    width: 200px;
-    padding: 5px;
+    width: 250px;
+    padding: 5.5px;
     font-size: 1em;
     margin: 0;
 }
@@ -35,7 +35,7 @@
 }
 
 .home-club-cards-container {
-    padding: 0 2em;
+    padding: 0 6em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
