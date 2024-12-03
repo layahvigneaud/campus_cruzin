@@ -24,29 +24,60 @@
 
 .reviewcard-container p {
     font-family: 'Inter';
-    font-size: 0.75rem;
     color: #757575;
     font-weight: 400;
 }
 
 .reviewcard-header {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* Spread items to the left and right */
+}
+
+.reviewcard-header h3 {
+    margin: 0; /* Remove margin to bring it closer to the save button */
+    font-family: 'Inter';
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgb(145, 145, 145);
+}
+
+.reviewcard-date-save {
+    display: flex;
+    align-items: center; /* Align date and save button vertically */
+    gap: 1rem; /* Add space between date and save button */
 }
 
 .reviewcard-content {
-    padding-right: 10rem;
+    padding-right: 1rem;
+    font-size: 1rem;
 }
+
+.reviewcard-contents {
+    padding-right: 1rem;
+    font-size: 1rem;
+}
+
+
 
 .reviewcard-demographics{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     margin-bottom: 1rem;
+    font-size: 0.8rem;
+}
+
+#rbold{
+    font-size: 0.8rem;
+}
+
+#rbold strong{
+    font-weight: 600;
+    color: #024363;
+
 }
 
 .reviewcard-container .rating {

@@ -12,24 +12,29 @@ function ReviewCard({description, major, application, time, position, rating, da
     return (
         <div>
             <div className="reviewcard-container">
-                <div className="reviewcard-header">
-                    <h3>posted on: {date.substring(0, 10)}</h3>
-                    <SaveReviewButton saveState={isSaved} reviewId={review_id}/>
+            <div className="reviewcard-header">
+                <Rating value={rating.toFixed(1)} />
+                <div className="reviewcard-date-save">
+                    <h3>{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</h3>
+                    <SaveReviewButton saveState={isSaved} reviewId={review_id} />
                 </div>
+            </div>
                 <div className="reviewcard-content">
                     <p className="reviewcard-contents">
                         {description}
                     </p>
                     <p className="reviewcard-demographics">
-                        Major: {major}
+                        <p id="rbold">
+                        <strong>Major: </strong>{major}
                         <br/>
-                        Application Required? {application}
+                        <strong>Application Required? </strong> {application}
                         <br/>
-                        Time commitment: {time} hour{time === '1' ? '' : 's'}/week
+                        <strong> Time commitment: </strong> {time} hour{time === '1' ? '' : 's'}/week
                         <br/>
-                        Position: {position !== "" ? position : "N/A"}
+                        <strong>Position: </strong> {position !== "" ? position : "N/A"}
+                        </p>
                     </p>
-                    <Rating value={rating.toFixed(1)}/>
+                    
                 </div>
             </div>
         </div>
