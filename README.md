@@ -41,7 +41,7 @@ Open a new terminal and then split the terminal.
      # KEY is sequence of characters used to sign the token
      # GMAIL_PASS is the app password generated from GMAIL
 
-**NOTE:** _Make sure you create an account with an @ucla.edu email._
+**NOTE:** _Clubs were added manually into the MongoDB following the schema specified under mern/server/models/Club.js_
 
 ## Credits:
 @michelle-b7
