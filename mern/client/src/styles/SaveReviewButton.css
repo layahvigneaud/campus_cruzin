@@ -4,13 +4,13 @@
     align-items: center;
 }
 .save-review-likes {
-    font-size: 1rem;
+    font-size: 1em;
     padding: 0;
 }
 
 .save-review-button {
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
     align-items: center;
     justify-content: center;
     background: transparent;
@@ -19,6 +19,6 @@
 }
 
 .save-review-button img{
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
 }

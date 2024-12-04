@@ -124,7 +124,7 @@ function SavedClubs() {
                                 link={true}
                             />
                         </div>))
-                    : <h1>Save some clubs to get started!</h1>
+                    : <h1 className="saved-clubs-title">Save some clubs to get started!</h1>
                 }
             </div>
         </div>

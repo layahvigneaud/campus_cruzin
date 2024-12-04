@@ -80,7 +80,7 @@ function SavedReviews() {
                                 isSaved={true}
                             />
                         </div>))
-                    : <h1>Save some reviews to get started!</h1>
+                    : <h1 className="saved-reviews-title">Save some reviews to get started!</h1>
                 }
             </div>
         </div>
