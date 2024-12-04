@@ -110,7 +110,7 @@ function Home() {
     if (error) return <p>{error}</p>;
 
     return (
-        <div class="home-clubs">
+        <div className="home-clubs">
             <Navbar />
             <div className="home-container">
                 <div className="home-search-and-cards">

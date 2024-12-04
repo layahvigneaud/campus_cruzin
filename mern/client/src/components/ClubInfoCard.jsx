@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import SaveClubButton from './SaveClubButton';
 import Rating from './Rating';
 import '../styles/ClubInfoCard.css';
 
-function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo, isSaved, club_id}) {
+function ClubInfoCard({title, description, tags, major, rating, time, application, moreinfo, isSaved, club_id, link}) {
     if(moreinfo === "") {
         moreinfo = "No additional information available."
     }
@@ -17,8 +18,9 @@ function ClubInfoCard({title, description, tags, major, rating, time, applicatio
     return (
         <div className="club-info-card-container">
             <SaveClubButton saveState={isSaved} clubId={club_id}/>
-            <div>
-                <h1>{title}</h1>
+            <div className="club-info-card-left">
+                {link ? (<Link to={`/club/${club_id}`}><h1>{title}</h1></Link>) :
+                (<h1>{title}</h1>)}
                 <p>{description}</p>
                 <Rating 
                     className="rating"

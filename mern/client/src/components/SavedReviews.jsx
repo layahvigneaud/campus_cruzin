@@ -64,7 +64,7 @@ function SavedReviews() {
             <Navbar/>
             <div className="saved-reviews-content-container">
                 <BackButton/>
-                <h1>Your Saved Reviews</h1>
+                <h1 className="saved-reviews-title">Your Saved Reviews</h1>
                 {reviews.length > 0 ? 
                     reviews.map((review) => (
                         <div key={review._id} className="savedreviews-clubcard">
