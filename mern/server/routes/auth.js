@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const UserModel = require('../models/User');
+const ReviewModel = require('../models/Review');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const router = express.Router();
@@ -201,7 +202,10 @@ router.post('/saveReview', async (req, res) => {
         );
 
         if (result.modifiedCount > 0)
+        {
+            await ReviewModel.updateOne({ _id: reviewId }, { $inc: { likes: 1 } });
             return res.json({ status: true, message: "Review successfully saved!"});
+        }
         else 
             return res.json({ status: false, message: "Something went wrong while saving review!"});
     } catch (err) {
@@ -225,8 +229,10 @@ router.post('/unsaveReview', async (req, res) => {
             { $pull: { savedReviews: reviewId } }
         );
 
-        if (result.modifiedCount > 0)
+        if (result.modifiedCount > 0) {
+            await ReviewModel.updateOne({ _id: reviewId }, { $inc: { likes: -1 } });
             return res.json({ status: true, message: "Review successfully unsaved!"});
+        }
         else 
             return res.json({ status: false, message: "Something went wrong while unsaving review!"});
     } catch (err) {

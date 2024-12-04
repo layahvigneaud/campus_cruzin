@@ -1,3 +1,13 @@
+.save-review {
+    display: flex;
+    gap: 0.2rem;
+    align-items: center;
+}
+.save-review-likes {
+    font-size: 1rem;
+    padding: 0;
+}
+
 .save-review-button {
     width: 1rem;
     height: 1rem;
