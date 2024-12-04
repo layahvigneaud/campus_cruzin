@@ -1,7 +1,7 @@
 .club-card-container {
     display: flex;
     flex-direction: column;
-    width: 23em;
+    width: 28em;
     min-height: 15em;
     height: fit-content;
     border: 1px solid #D3D3D3;
@@ -32,7 +32,7 @@
 }
 
 .club-card-container h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
     font-family: 'Inter', sans-serif;
 }
@@ -42,6 +42,6 @@
     font-weight: 450;
     margin: 0;
     color: grey;
-    font-size: 0.8em;
+    font-size: 0.9em;
     line-height: 1.5;
 }
