@@ -35,7 +35,7 @@
 }
 
 .home-club-cards-container {
-    padding: 0 6em;
+    padding: 0 2em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

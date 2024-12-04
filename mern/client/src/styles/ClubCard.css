@@ -1,7 +1,7 @@
 .club-card-container {
     display: flex;
     flex-direction: column;
-    width: 28em;
+    width: 23em;
     min-height: 15em;
     height: fit-content;
     border: 1px solid #D3D3D3;
