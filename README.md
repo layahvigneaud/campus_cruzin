@@ -1,6 +1,18 @@
 # Campus Cruisin' 
 This website aims to organize UCLA Engineering Clubs so students can better find a club that interests them.
 
+## Note for graders
+Under contributors, Layah and Rachel only show one commit. However, they have been contributing to the project. However, it does show up when the following command is run in the terminal on this repository:
+     git log --author="<NAME>"
+For Layah, there was a period of time where her GitHub account was not connected to her laptop, so her commits can be found using the following two commands:
+
+     git log --author="Layah Vigneaud"
+     git log --author="layahvigneaud"
+
+For Rachel, use the following command to verify her commits:
+
+     git log --author="rchlyoung0415"
+
 ## Tech Stack
 **Backend:** ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
