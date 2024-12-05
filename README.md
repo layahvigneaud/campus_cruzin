@@ -2,7 +2,7 @@
 This website aims to organize UCLA Engineering Clubs so students can better find a club that interests them.
 
 ## Note for graders
-Under contributors, Layah and Rachel only show one commit. However, they have been contributing to the project. However, it does show up when the following command is run in the terminal on this repository:
+Under contributors, Layah and Rachel only show one commit. However, they have been contributing to the project and have made multiple commits over the past three months. However, it does show up when the following command is run in the terminal on this repository:
      git log --author="<NAME>"
 For Layah, there was a period of time where her GitHub account was not connected to her laptop, so her commits can be found using the following two commands:
 
