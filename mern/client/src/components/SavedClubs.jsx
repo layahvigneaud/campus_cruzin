@@ -106,7 +106,7 @@ function SavedClubs() {
             <Navbar/>
             <div className="saved-clubs-content-container">
                 <BackButton/>
-                <h1>Your Saved Clubs</h1>
+                <h1 className="saved-clubs-title">Your Saved Clubs</h1>
                 {clubs.length > 0 ? 
                     clubs.map((club) => (
                         <div key={club._id} className="savedclubs-clubcard">
@@ -121,9 +121,10 @@ function SavedClubs() {
                                 moreinfo={club.moreInfo || ''}
                                 isSaved={true}
                                 club_id={club._id}
+                                link={true}
                             />
                         </div>))
-                    : <h1>Save some clubs to get started!</h1>
+                    : <h1 className="saved-clubs-title">Save some clubs to get started!</h1>
                 }
             </div>
         </div>

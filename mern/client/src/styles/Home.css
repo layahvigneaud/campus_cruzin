@@ -35,11 +35,10 @@
 }
 
 .home-club-cards-container {
-    padding: 0 2em;
+    padding: 0 1em 0 3em;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-left: 2em;
 }
 
 .home-side-by-side {
@@ -50,6 +49,7 @@
 
 .home-card-grid {
     display: grid;
+    width: 100%;
     grid-template-columns: 1fr 1fr; /* Two columns of equal width */
     gap: 2em; /* Optional: Adds spacing between grid items */
 }

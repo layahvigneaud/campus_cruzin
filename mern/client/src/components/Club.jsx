@@ -142,6 +142,7 @@ function Club() {
                         moreinfo={club.hasOwnProperty('moreInfo') ? club.moreInfo : ""}
                         isSaved={savedClubs.includes(clubId)}
                         club_id={clubId}
+                        link={false}
                     />
                 </div>
                 <div className="club-reviews-container">

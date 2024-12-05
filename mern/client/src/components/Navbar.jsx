@@ -8,9 +8,9 @@ import '../styles/Navbar.css';
 
 function Navbar() {
     return (
-        <div class="navbar">
-            <div class="navbar-side-by-side">
-                <div class="navbar-container">
+        <div className="navbar">
+            <div className="navbar-side-by-side">
+                <div className="navbar-container">
                     <Link to="/review">
                         <button type="button">
                             <img src={ReviewIcon} />
@@ -32,7 +32,7 @@ function Navbar() {
                         </button>
                     </Link>
                 </div>
-                <div class="navbar-logout-button">
+                <div className="navbar-logout-button">
                     {
                         <LogoutButton />
                     }
