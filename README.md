@@ -4,6 +4,7 @@ This website aims to organize UCLA Engineering Clubs so students can better find
 ## Note for graders
 Under contributors, Layah and Rachel only show one commit. However, they have been contributing to the project and have made multiple commits over the past three months. However, it does show up when the following command is run in the terminal on this repository:
      git log --author="<NAME>"
+
 For Layah, there was a period of time where her GitHub account was not connected to her laptop, so her commits can be found using the following two commands:
 
      git log --author="Layah Vigneaud"
@@ -50,7 +51,8 @@ Open a new terminal and then split the terminal.
      GMAIL=
      
      # MONGO_USER_URL is the MongoDB URI
-     # KEY is sequence of characters used to sign the token
+     # KEY is sequence of characters used to sign and decode the token, can be any
+     # GMAIL is the email for which you want to send reset password links from
      # GMAIL_PASS is the app password generated from GMAIL
 
 **NOTE:** _Clubs were added manually into the MongoDB following the schema specified under mern/server/models/Club.js_
